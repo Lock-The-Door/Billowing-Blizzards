@@ -1,6 +1,6 @@
 extends Sprite
 
-var worldSize = Vector2(2000, 2000)
+const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
 var speed = 500
 
 # Called when the node enters the scene tree for the first time.
@@ -30,5 +30,5 @@ func _process(delta):
 
 	
 	# Clamp to world size of 1000 x 1000
-	position.x = clamp(position.x, worldSize.x / -2, worldSize.x / 2)
-	position.y = clamp(position.y, worldSize.y / -2, worldSize.y / 2)
+	position.x = clamp(position.x, WORLD_SIZE.x / -2, WORLD_SIZE.x / 2)
+	position.y = clamp(position.y, WORLD_SIZE.y / -2, WORLD_SIZE.y / 2)
