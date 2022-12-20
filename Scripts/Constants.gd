@@ -1,3 +1,4 @@
 extends Node2D
 
-const WORLD_SIZE = Vector2(5000, 5000)
+const WORLD_LENGTH = 1000
+const WORLD_SIZE = Vector2(WORLD_LENGTH, WORLD_LENGTH)
