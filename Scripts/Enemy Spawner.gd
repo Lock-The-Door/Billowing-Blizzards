@@ -18,7 +18,7 @@ func _process(delta):
 	# temporary way to spawn enemies
 	timePassed += delta
 
-	if level != 0 and timePassed > 1/level:
+	if level != 0 and timePassed > 10/level:
 		timePassed = 0
 		spawnEnemy()
 
