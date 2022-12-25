@@ -4,8 +4,8 @@ const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
 
 func _ready():
 	setSize()
-	get_tree().get_root().connect("size_changed", self, "setSize")
-	
+	if get_tree().get_root().connect("size_changed", self, "setSize") != OK:
+		push_warning("screen size changed signal not connected")
 	
 func setSize():
 	# get window size
