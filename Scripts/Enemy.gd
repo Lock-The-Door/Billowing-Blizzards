@@ -1,13 +1,10 @@
-extends Sprite
+extends Node2D
 
-export var EnemyType = ""
+var enemyNode
 
-func _ready():
-	self.set_texture(load("res://Assets/Enemies/" + EnemyType + ".png"))
+func init(enemyType):
+	enemyNode = load("res://Templates/Enemies/" + enemyType + ".tscn").instance()
+	self.add_child(enemyNode)
 
-func _process(delta):
-	# move towards player
-	var player = get_node("/root/Game/Player")
-	var direction = player.position - self.position
-	direction = direction.normalized()
-	self.position += direction * 100 * delta
+func damage(damage):
+	enemyNode.health -= damage
