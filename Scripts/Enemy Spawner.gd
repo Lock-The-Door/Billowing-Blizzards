@@ -18,7 +18,7 @@ func _process(delta):
 
 func spawnEnemy():
 	var enemy = enemyTemplate.instance()
-	enemy.init("Test Enemy")
+	enemy.init("Test Ranged Enemy")
 	get_node("/root/Game/Enemies").add_child(enemy)
 	# Select a random edge to spawn the enemy on
 	var edge = randi() % 4

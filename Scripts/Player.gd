@@ -1,12 +1,13 @@
-extends Sprite
+extends Node2D
 
 const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
 
-var _health = 100
-var _speed = 500
+export (int)var _health
+export (int)var _speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	resolveBodyParts()
 	pass
 
 
@@ -37,3 +38,23 @@ func damage(damage):
 	if _health <= 0:
 		_health = 0
 		# TODO: Die
+
+# Moves the body parts to the correct positions
+func resolveBodyParts():
+	var children = get_children()
+	children.invert()
+
+	# Get the height of the bottom-most body part
+	var bottomHeight = 0
+	for child in children:
+		if child is Sprite or child is AnimatedSprite:
+			bottomHeight = child.get_texture().get_size().y * child.scale.y
+			break
+
+	# Move the body parts to the correct positions
+	var currentHeight = 0
+	for child in children:
+		if child is Sprite or child is AnimatedSprite:
+			var childHeight = child.get_texture().get_size().y * child.scale.y
+			child.position.y = -currentHeight - childHeight / 2 + bottomHeight / 2
+			currentHeight += childHeight
