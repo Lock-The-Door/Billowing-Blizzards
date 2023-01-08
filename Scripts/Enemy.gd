@@ -1,10 +1,18 @@
-extends Node2D
+extends Sprite
 
-var enemyNode
+# enemy properties
+export(int) var _health
+export(int) var _speed
+export(int) var _attackDamage
+export(int) var _attackRange
+export(int) var _attackSpeed
 
-func init(enemyType):
-	enemyNode = load("res://Templates/Enemies/" + enemyType + ".tscn").instance()
-	self.add_child(enemyNode)
+# other stuff
+onready var _player = get_node("/root/Game/Player")
 
 func damage(damage):
-	enemyNode.health -= damage
+	_health -= damage
+	
+	# dying
+	if (_health <= 0):
+		self.queue_free()

@@ -1,19 +1,10 @@
-extends Sprite
+extends "res://Scripts/Enemy.gd"
 
-# enemy properties
-export(int) var _health
-export(int) var _speed
-export(int) var _attackDamage
-export(int) var _attackRange
-export(int) var _attackSpeed
-
-# other stuff
-onready var _player = get_node("/root/Game/Player")
 var _attackTimer = 0
 
 func _process(delta):
 	# get displacement from player
-	var displacement = _player.position - get_parent().position
+	var displacement = _player.position - self.position
 	
 	_attackTimer += delta
 	# within attacking range?
@@ -25,4 +16,4 @@ func _process(delta):
 	else:
 		# move closer to player
 		var direction = displacement.normalized()
-		get_parent().position += direction * _speed * delta
+		position += direction * _speed * delta

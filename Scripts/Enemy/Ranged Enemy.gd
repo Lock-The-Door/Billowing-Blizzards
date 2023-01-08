@@ -1,23 +1,16 @@
-extends Sprite
+extends "res://Scripts/Enemy.gd"
 
-# enemy properties
-export(int) var _health
-export(int) var _speed
-export(int) var _attackDamage
-export(int) var _attackRange
-export(int) var _attackSpeed
 export(String) var _projectileName
 export(int) var _projectileSpeed
 export(int) var _projectileLifespan
 
-# other stuff
-onready var _player = get_node("/root/Game/Player")
-var _attackTimer = 0
 onready var _projectile = load("res://Templates/Projectiles/" + _projectileName + ".tscn")
+
+var _attackTimer = 0
 
 func _process(delta):
 	# get displacement from player
-	var displacement = _player.position - get_parent().position
+	var displacement = _player.position - self.position
 	
 	_attackTimer += delta
 	# within attacking range?
@@ -32,4 +25,9 @@ func _process(delta):
 	else:
 		# move closer to player
 		var direction = displacement.normalized()
-		get_parent().position += direction * _speed * delta
+		self.position += direction * _speed * delta
+
+		var children = get_children()
+		for child in children:
+			if child.is_in_group("projectile"):
+				child.position -= direction * _speed * delta

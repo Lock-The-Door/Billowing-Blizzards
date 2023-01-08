@@ -1,4 +1,4 @@
 extends Node2D
 
-const WORLD_LENGTH = 1000
+const WORLD_LENGTH = 2000
 const WORLD_SIZE = Vector2(WORLD_LENGTH, WORLD_LENGTH)
