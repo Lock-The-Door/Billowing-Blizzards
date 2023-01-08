@@ -7,9 +7,8 @@
 [ext_resource path="res://Assets/snow bg.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=6]
 
-[sub_resource type="CapsuleShape2D" id=8]
-radius = 150.0
-height = 500.0
+[sub_resource type="CircleShape2D" id=1]
+radius = 112.0
 
 [node name="Game" type="Node2D"]
 
@@ -27,16 +26,20 @@ expand = true
 stretch_mode = 2
 script = ExtResource( 6 )
 
-[node name="Player" type="Sprite" parent="."]
+[node name="Player" type="Node2D" parent="."]
 scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 1 )
 script = ExtResource( 2 )
+_health = 100
+_speed = 500
 
-[node name="Area2D" type="Area2D" parent="Player"]
+[node name="Head" type="Sprite" parent="Player"]
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Player/Head"]
 input_pickable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-shape = SubResource( 8 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Head/Area2D"]
+shape = SubResource( 1 )
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 4 )

@@ -1,9 +1,9 @@
-extends Sprite
+extends Node2D
 
 const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
 
-var _health = 100
-var _speed = 500
+export (int)var _health
+export (int)var _speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
