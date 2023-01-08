@@ -1,49 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/Enemies/Test Enemy.png" type="Texture" id=1]
-
-[sub_resource type="GDScript" id=1]
-resource_name = "Test Ranged Enemy"
-script/source = "extends Sprite
-
-# enemy properties
-export(int) var _health
-export(int) var _speed
-export(int) var _attackDamage
-export(int) var _attackRange
-export(int) var _attackSpeed
-export(String) var _projectileName
-export(int) var _projectileSpeed
-export(int) var _projectileLifespan
-
-# other stuff
-onready var _player = get_node(\"/root/Game/Player\")
-var _attackTimer = 0
-onready var _projectile = load(\"res://Templates/Projectiles/\" + _projectileName + \".tscn\")
-
-func _process(delta):
-	# get displacement from player
-	var displacement = _player.position - get_parent().position
-	
-	_attackTimer += delta
-	# within attacking range?
-	if displacement.length() < _attackRange:
-		# fire at player
-		if _attackTimer * _attackSpeed >= 1:
-			var projectileInstance = _projectile.instance()
-			var angle = atan2(displacement.y, displacement.x)
-			projectileInstance.init(angle, _projectileSpeed, _projectileLifespan, _attackDamage, true)
-			self.add_child(projectileInstance)
-			_attackTimer = 0
-	else:
-		# move closer to player
-		var direction = displacement.normalized()
-		get_parent().position += direction * _speed * delta
-"
+[ext_resource path="res://Scripts/Enemies/Test Ranged Enemy.gd" type="Script" id=2]
 
 [node name="Test Ranged Enemy" type="Sprite"]
 texture = ExtResource( 1 )
-script = SubResource( 1 )
+script = ExtResource( 2 )
 _health = 100
 _speed = 100
 _attackDamage = 1
