@@ -10,6 +10,9 @@ var _projectileLifespan
 var _projectileDamage
 var _isEnemyProjectile
 
+func _ready():
+	self.add_to_group("projectile")
+
 func init(angle, speed, lifespan, damage, isEnemyProjectile = false):
 	_projectileSpeed = speed
 	self.rotation = angle

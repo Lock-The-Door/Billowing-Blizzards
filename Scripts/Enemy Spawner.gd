@@ -26,6 +26,8 @@ func spawnEnemy():
 	else:
 		enemy = RANGED_ENEMY.instance()
 	get_node("/root/Game/Enemies").add_child(enemy)
+	enemy.add_to_group("enemy")
+	
 	# Select a random edge to spawn the enemy on
 	var edge = randi() % 4
 	# Select a random position on that edge
