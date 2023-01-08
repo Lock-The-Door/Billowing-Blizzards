@@ -28,8 +28,8 @@ func _process(delta):
 			self.queue_free()
 			return
 	# check if within the world bounds
-	var absPos = position.abs()
-	if (absPos.x > WORLD_LENGTH/2.0 or absPos.y > WORLD_LENGTH/2.0):
+	var absPos = global_position.abs()
+	if (absPos.x > WORLD_LENGTH or absPos.y > WORLD_LENGTH):
 		self.queue_free()
 		return
 		

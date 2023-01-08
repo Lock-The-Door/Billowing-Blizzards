@@ -1,7 +1,8 @@
 extends Node2D
 
 const WORLD_LENGTH = preload("res://Scripts/Constants.gd").WORLD_LENGTH
-var enemyTemplate = preload("res://Templates/Enemy.tscn")
+const MELEE_ENEMY = preload("res://Templates/Enemies/Test Enemy.tscn")
+const RANGED_ENEMY = preload("res://Templates/Enemies/Test Ranged Enemy.tscn")
 
 func _ready():
 	pass
@@ -17,8 +18,13 @@ func _process(delta):
 		spawnEnemy()
 
 func spawnEnemy():
-	var enemy = enemyTemplate.instance()
-	enemy.init("Test Ranged Enemy")
+	# randomly choose an enemy type
+	var enemyType = randi() % 2
+	var enemy
+	if enemyType == 0:
+		enemy = MELEE_ENEMY.instance()
+	else:
+		enemy = RANGED_ENEMY.instance()
 	get_node("/root/Game/Enemies").add_child(enemy)
 	# Select a random edge to spawn the enemy on
 	var edge = randi() % 4
