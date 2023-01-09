@@ -1,0 +1,10 @@
+// This is a tutorial level.
+{
+    "header": {
+        "subtitle": "How to snowman",
+        "bonus": "snow=100;health=100"
+    },
+    "enemies": {
+        
+    }
+}
