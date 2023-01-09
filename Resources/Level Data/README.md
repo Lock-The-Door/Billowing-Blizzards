@@ -37,79 +37,80 @@ More keys will be added in the future.
 
 #### Enemy section
 
-The enemy section is used for spawning enemies. It is an array of dictionaries. This dictionary should contain one or more spawning keys (`timestamp` or `trigger`) and a enemy data key named `data`.
+The enemy section is used for spawning enemies. It is an array of dictionaries. This dictionary should contain one or more spawning keys (`timestamp` or `trigger`), a `parallel` key to await for multiple triggers, and an enemy data key named `data`.
 The following sections will describe each key.
 
 ```json
 // example enemy section
 "enemies": [
   {
-      "trigger": "timestamp=00:01:00",
-      "data": [
-          {
-              "type": "Test Enemy",
-              "count": 1,
-              "location": "world-random",
-              "radius": 0,
-              "target": "player",
-              "overrides": {
-                  "health": 100
-              }
-          }
-      ]
+    "trigger": "timestamp=00:01:00",
+    "data": [
+      {
+        "type": "Test Enemy",
+        "count": 1,
+        "location": "world-random",
+        "target": "player"
+      }
+    ]
   },
   {
-      "trigger": "enemyKilled=2",
-      "data": [
-          {
-              "type": "Test Ranged Enemy",
-              "count": 3,
-              "location": "world-random",
-              "radius": 0,
-              "target": "player",
-              "overrides": {
-                  "speed": 50
-              }
-          },
-          {
-              "type": "Test Ranged Enemy",
-              "count": 1,
-              "location": "world-random",
-          }
-      ]
+    "trigger": "enemyKilled=2",
+    "data": [
+      {
+        "type": "Test Ranged Enemy",
+        "count": 3,
+        "location": "world-random",
+        "radius": 100,
+        "target": "player",
+        "overrides": {
+            "speed": 50
+        }
+      },
+      {
+        "type": "Test Ranged Enemy",
+        "count": 1,
+        "location": "world-random",
+        "overrides": {
+          "health": 200
+        }
+      }
+    ]
   },
   {
-      "trigger": "enemyKilled",
-      "data": [
-          {
-              "type": "Test Enemy",
-              "count": 1,
-              "location": "screen-random",
-              "radius": 0,
-              "target": "player",
-              "overrides": {
-                  "health": 100
-              }
-          }
-      ]
+    "trigger": "enemyKilled",
+    "data": [
+      {
+        "type": "Test Enemy",
+        "count": 1,
+        "location": "screen-random",
+        "radius": 0,
+        "target": "player",
+        "overrides": {
+            "health": 100
+        }
+      }
+    ]
   }
 ]
 ```
 
-**The file will be read one spawn group at a time. Ensure triggers such as timestamps are in order!**
+**The file will be read one spawn group at a time unless the parallel key exists and is set to true. Ensure triggers such as timestamps are in order!**
 
 **Spawning enemies**
 
 Spawning enemies can be done using triggers.
 Triggers will be a simple string value with some triggers having an optional parameter. For example, if the key is `enemyKilled` the enemy will be spawned when an enemy is killed. If the key is `enemyKilled=2` the enemy will be spawned when the second enemy is killed.
 
-Possible trigger values (* indicates this parameter is optional):
+Possible trigger values (\* indicates this parameter is optional):
+
 - `timestamp=isoTimestamp` - Spawn the enemy at the specified timestamp. This timestamp should be specified in the standard ISO 8601 timestamp. For example, `00:01:00` will spawn the enemy 1 minute after the level starts.
 - `enemyKilled=int*` - Spawn the enemy when the specified number of enemies are killed.
 
 **Enemy data**
 
 Each value will be an array of "spawning groups". Each spawning group will be a dictionary with the following keys:
+
 - `type` - The type of enemy to spawn. This is a string value. Possible values include:
   - `Test Enemy` - A melee enemy.
   - `Test Ranged Enemy` - A ranged enemy.
