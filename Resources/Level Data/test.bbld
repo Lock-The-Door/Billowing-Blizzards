@@ -59,6 +59,17 @@
                     "location": "world-right",
                     "radius": 100
                 }
+            ],
+            "async": true
+        },
+        {
+            "trigger": "timestamp=00:00:01", // this should run instantly before the previous group
+            "data": [
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "screen;500,0"
+                }
             ]
         }
     ]

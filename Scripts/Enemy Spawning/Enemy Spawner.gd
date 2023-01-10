@@ -67,7 +67,7 @@ func _readInstruction(index):
 
 	# check if this spawn group should be run asynchronously (read ahead)
 	if nextInstruction.get("async", false):
-		_readInstruction(index+1)
+		return _readInstruction(index+1)
 
 	# failed
 	return -1
