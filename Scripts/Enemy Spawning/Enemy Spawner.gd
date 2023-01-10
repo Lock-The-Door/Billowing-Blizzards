@@ -76,7 +76,8 @@ const EDGE_INTS = {
 	"top": 0,
 	"right": 1,
 	"bottom": 2,
-	"left": 3
+	"left": 3,
+	"center": 4
 }
 func _spawnEnemies(enemyGroup):
 	# this is the template that will be instantiated
@@ -131,6 +132,8 @@ func _spawnEnemies(enemyGroup):
 				spawnPos = Vector2(rand_range(minXPos, maxXPos), maxYPos)
 			3: # left
 				spawnPos = Vector2(minXPos, rand_range(minYPos, maxYPos))
+			4: # center
+				spawnPos = Vector2((minXPos + maxXPos)/2, (minYPos + maxYPos)/2)
 
 	# TODO: calculate radial positioning
 
