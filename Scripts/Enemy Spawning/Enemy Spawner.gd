@@ -90,7 +90,8 @@ func _spawnEnemies(enemyGroup):
 	var spawnPos
 	if enemySpawn.find(";") != -1:
 		enemySpawn = enemySpawn.split(";")
-		spawnPos = Vector2(enemySpawn[1].split(","))
+		var axis = enemySpawn[1].split(",")
+		spawnPos = Vector2(axis[0], axis[1])
 
 		if enemySpawn[0] == "screen":
 			# TODO: convert to world coordinates
