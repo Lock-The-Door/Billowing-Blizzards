@@ -18,7 +18,7 @@ I am lazy so I will be using JSON as the underlying file format.
 
 ### File structure
 
-The file is split up into two sections: the header and the enemy data.
+The file is split up into two primary sections: the header and the enemy data. Additionally, comment lines can be made by preceeding the comment text with `//` and multiline comments can be made with ``/* comment text */``.
 
 #### Header
 
@@ -37,7 +37,7 @@ More keys will be added in the future.
 
 #### Enemy section
 
-The enemy section is used for spawning enemies. It is an array of dictionaries. This dictionary should contain one or more spawning keys (`timestamp` or `trigger`), a `parallel` key to await for multiple triggers, and an enemy data key named `data`.
+The enemy section is used for spawning enemies. It is an array of dictionaries. This dictionary should contain one or more spawning keys (`timestamp` or `trigger`), a `async` key to await for multiple triggers, and an enemy data key named `data`.
 The following sections will describe each key.
 
 ```json
@@ -52,7 +52,8 @@ The following sections will describe each key.
         "location": "world-random",
         "target": "player"
       }
-    ]
+    ],
+    "async": true
   },
   {
     "trigger": "enemyKilled=2",
