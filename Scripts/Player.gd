@@ -41,10 +41,11 @@ func _process(delta):
 
 func damage(damage):
 	_health -= damage
-	print(_health)
 	if _health <= 0:
 		_health = 0
 		# TODO: Die
+	
+	print(_health)
 
 # Moves the body parts to the correct positions
 func resolveBodyParts():
