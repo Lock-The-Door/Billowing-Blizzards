@@ -1,14 +1,21 @@
 extends Node2D
 
 const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
+const BODY = preload("res://Templates/Upgrades/Body.tscn")
 
 export (int)var _health
 export (int)var _speed
 
+var _bodyCount = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# add initial body
+	var newBody = BODY.instance()
+	add_child(newBody)
+	newBody.init(++_bodyCount)
+
 	resolveBodyParts()
-	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
