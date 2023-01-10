@@ -54,6 +54,10 @@ func _readInstruction(index):
 	if (index >= _enemyData.size() or TriggerReader == null):
 		return -1 # missing data
 	var nextInstruction = _enemyData[index]
+
+	# assign or fetch a uid for this instruction
+	if nextInstruction.get("uid", null) == null:
+		nextInstruction["uid"] = TriggerReader.getUID()
 	
 	# read the trigger and see if the trigger has been met, handoff the trigger value reader to an appropriate function
 	var isTriggered = TriggerReader.readTrigger(nextInstruction["trigger"])
@@ -147,3 +151,12 @@ func _spawnEnemies(enemyGroup):
 		self.add_child(enemyInstance)
 		enemyInstance.add_to_group("enemies")
 		enemyInstance.set_position(spawnPos)
+
+# Recieve trigger calls and pass them to the trigger reader
+func activateTrigger(triggerName):
+	if TriggerReader == null:
+		return
+
+	match triggerName:
+		"enemy_killed":
+			TriggerReader.enemyKilled()
