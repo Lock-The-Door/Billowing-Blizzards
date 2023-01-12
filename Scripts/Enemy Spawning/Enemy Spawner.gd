@@ -60,7 +60,7 @@ func _readInstruction(index):
 		nextInstruction["uid"] = TriggerReader.getUID()
 	
 	# read the trigger and see if the trigger has been met, handoff the trigger value reader to an appropriate function
-	var isTriggered = TriggerReader.readTrigger(nextInstruction["trigger"])
+	var isTriggered = TriggerReader.readTrigger(nextInstruction["trigger"], nextInstruction["uid"])
 	
 	if isTriggered:
 		# condition met, read the enemy data and spawn
