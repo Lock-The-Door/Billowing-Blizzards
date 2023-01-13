@@ -5,19 +5,17 @@ var TriggerReader
 
 const WORLD_LENGTH = preload("res://Scripts/Constants.gd").WORLD_LENGTH
 
-onready var commentRegex = RegEx.new()
-onready var typeRegex = RegEx.new()
+onready var _commentRegex = RegEx.new()
+onready var _typeRegex = RegEx.new()
 
 var _enemyTypes = {} # loaded enemy types go here
 
-var _currentLevel = 0
+signal level_completed
 var _enemyData = []
 
 func _ready():
-	commentRegex.compile("\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/")
-	typeRegex.compile("\"type\": ?\"([\\s\\S]+?)\"")
-
-	readLvlData("test")
+	_commentRegex.compile("\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/")
+	_typeRegex.compile("\"type\": ?\"([\\s\\S]+?)\"")
 
 # read the level data file, apply the headers and save the enemy data to the list
 func readLvlData(lvl):
@@ -26,7 +24,7 @@ func readLvlData(lvl):
 	var fileText = file.get_as_text()
 	file.close()
 	# use regex to remove comments
-	fileText = commentRegex.sub(fileText, "", true)
+	fileText = _commentRegex.sub(fileText, "", true)
 	var levelData = parse_json(fileText)
 
 	# TODO: apply or use header data
@@ -37,7 +35,7 @@ func readLvlData(lvl):
 	_enemyData = levelData["enemies"]
 
 	# Load required enemy templates
-	var typeList = typeRegex.search_all(fileText)
+	var typeList = _typeRegex.search_all(fileText)
 	for type in typeList:
 		type = type.strings[1]
 		_enemyTypes[type] = load("res://Templates/Enemies/{0}.tscn".format([type]))
@@ -50,6 +48,10 @@ func _process(_delta):
 	if successIndex != -1:
 		_enemyData.remove(successIndex) # potential optimisation by removing last element first
 
+	# check for level completion
+	if _enemyData.count() == 0 and self.get_child_count() == 0:
+		emit_signal("level_completed")
+
 func _readInstruction(index):
 	if (index >= _enemyData.size() or TriggerReader == null):
 		return -1 # missing data
@@ -60,7 +62,7 @@ func _readInstruction(index):
 		nextInstruction["uid"] = TriggerReader.getUID()
 	
 	# read the trigger and see if the trigger has been met, handoff the trigger value reader to an appropriate function
-	var isTriggered = TriggerReader.readTrigger(nextInstruction["trigger"])
+	var isTriggered = TriggerReader.readTrigger(nextInstruction["trigger"], nextInstruction["uid"])
 	
 	if isTriggered:
 		# condition met, read the enemy data and spawn
