@@ -1,4 +1,4 @@
-extends "res://Scripts/Enemy.gd"
+extends "res://Scripts/Enemy/Enemy.gd"
 
 export(String) var _projectileName
 export(int) var _projectileSpeed

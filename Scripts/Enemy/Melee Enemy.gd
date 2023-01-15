@@ -1,4 +1,4 @@
-extends "res://Scripts/Enemy.gd"
+extends "res://Scripts/Enemy/Enemy.gd"
 
 var _attackTimer = 0
 

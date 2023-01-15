@@ -2,24 +2,41 @@ extends Node2D
 
 const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
 const BODY = preload("res://Templates/Upgrades/Body.tscn")
+const STICK = preload("res://Templates/Weapons/Stick.tscn")
 
 export (int)var _health
 export (int)var _speed
 
 var _bodyCount = 0
 
+var isNonplayable = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if isNonplayable:
+		return
+
 	# add initial body
 	var newBody = BODY.instance()
 	add_child(newBody)
 	newBody.init(++_bodyCount)
+
+	var leftStick = STICK.instance()
+	leftStick.position += Vector2(75, 0)
+	newBody.add_child(leftStick)
+	var rightStick = STICK.instance()
+	rightStick.flip_h = true
+	rightStick.position -= Vector2(75, 0)
+	newBody.add_child(rightStick)
 
 	resolveBodyParts()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if isNonplayable:
+		return
+
 	# Movement
 	# Up:
 	if Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP):

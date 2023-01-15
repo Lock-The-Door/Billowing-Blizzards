@@ -20,7 +20,7 @@ func _ready():
 # read the level data file, apply the headers and save the enemy data to the list
 func readLvlData(lvl):
 	var file = File.new()
-	file.open("res://Resources/Level Data/" + lvl + ".bbld", File.READ)
+	file.open("res://Resources/Level Data/" + str(lvl) + ".bbld", File.READ)
 	var fileText = file.get_as_text()
 	file.close()
 	# use regex to remove comments
@@ -49,7 +49,7 @@ func _process(_delta):
 		_enemyData.remove(successIndex) # potential optimisation by removing last element first
 
 	# check for level completion
-	if _enemyData.count() == 0 and self.get_child_count() == 0:
+	if _enemyData.size() == 0 and self.get_child_count() == 0:
 		emit_signal("level_completed")
 
 func _readInstruction(index):

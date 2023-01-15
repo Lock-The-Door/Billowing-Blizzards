@@ -1,4 +1,4 @@
-extends "res://Scripts/Projectile.gd"
+extends "res://Scripts/Projectiles/Projectile.gd"
 
 func _process(delta):
 	# move

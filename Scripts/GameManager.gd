@@ -1,20 +1,19 @@
 extends Node2D
 
 onready var spawner = get_node("Enemies")
+onready var upgradeMenu = get_node("Daily Upgrade")
 
-var _level = 0
+var level = 0
 
 func _ready():
-    spawner.connect("level_complete", self, "next_level")
-    spawner.readLvlData(_level)
+	spawner.connect("level_completed", self, "_levelCompleted")
+	spawner.readLvlData("test")
 
-func next_level():
-    print("Level complete!")
-    _level += 1
+func _levelCompleted():
+	print("Level complete!")
+	
+	upgradeMenu.visible = true
 
-    # ensure level exists (hardcoded for now)
-    if _level > 2:
-        print("Game complete!")
-        return
-
-    spawner.readLvlData(_level)
+func nextLevel():
+	level += 1
+	spawner.readLvlData(level)

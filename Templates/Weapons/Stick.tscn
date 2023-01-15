@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Weapons/stick.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Weapon.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Weapons/stickattack.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[node name="Stick" type="AnimatedSprite"]
+position = Vector2( -15, 0 )
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+offset = Vector2( 150, 0 )
+script = ExtResource( 2 )
+attackDamage = 5
+attackRange = 200
+attackSpeed = 1

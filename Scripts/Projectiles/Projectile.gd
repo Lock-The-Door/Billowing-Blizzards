@@ -30,9 +30,10 @@ func _process(delta):
 		if _projectileLifespan <= 0:
 			self.queue_free()
 			return
-	# check if within the world bounds
+	# check if within the world bounds and offscreen
+	var screenSize = get_viewport_rect().size / 2
 	var absPos = global_position.abs()
-	if (absPos.x > WORLD_LENGTH or absPos.y > WORLD_LENGTH):
+	if absPos.x > WORLD_LENGTH + screenSize.x or absPos.y > WORLD_LENGTH + screenSize.y:
 		self.queue_free()
 		return
 		
@@ -50,4 +51,7 @@ func _process(delta):
 				parent.damage(_projectileDamage)
 				self.queue_free()
 				return
+			elif parent.is_in_group("projectile"):
+				# ignore collisions with other projectiles
+				break
 			parent = parent.get_parent()
