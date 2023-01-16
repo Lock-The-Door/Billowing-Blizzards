@@ -1,7 +1,7 @@
 extends Node2D
 
 const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
-const BODY = preload("res://Templates/Upgrades/Body.tscn")
+const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
 const STICK = preload("res://Templates/Weapons/Stick.tscn")
 
 export (int)var _health
@@ -22,12 +22,9 @@ func _ready():
 	newBody.init(++_bodyCount)
 
 	var leftStick = STICK.instance()
-	leftStick.position += Vector2(75, 0)
-	newBody.add_child(leftStick)
+	newBody.addItem(leftStick, "left")
 	var rightStick = STICK.instance()
-	rightStick.flip_h = true
-	rightStick.position -= Vector2(75, 0)
-	newBody.add_child(rightStick)
+	newBody.addItem(rightStick, "right")
 
 	resolveBodyParts()
 
