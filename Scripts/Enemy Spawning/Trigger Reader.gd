@@ -19,7 +19,7 @@ func readTrigger(data, triggerId):
 	match triggerKey:
 		"timestamp":
 			shouldTrigger = _timestampReader(triggerValue)
-		"enemyKilled":
+		"enemy_killed":
 			shouldTrigger = _enemyKilledReader(triggerId, triggerValue)
 
 	if shouldTrigger:
@@ -37,7 +37,7 @@ func _timestampReader(timestampString): # A trigger based on the time elapsed in
 	return timeElapsed >= timestampDuration
 
 var _enemyKilledData = {}
-func enemyKilled():
+func enemy_killed():
 	# increment all triggers
 	for triggerId in _enemyKilledData:
 		_enemyKilledData[triggerId] += 1

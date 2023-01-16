@@ -4,7 +4,12 @@
         "subtitle": "How to snowman",
         "bonus": "snow=100;health=100"
     },
-    "enemies": {
-        
-    }
+    "enemies": [
+        {
+            "trigger": "enemy_killed",
+            "data": [
+                
+            ]
+        }
+    ]
 }

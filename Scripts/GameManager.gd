@@ -7,7 +7,7 @@ var level = 0
 
 func _ready():
 	spawner.connect("level_completed", self, "_levelCompleted")
-	spawner.readLvlData("test")
+	spawner.readLvlData(0)
 
 func _levelCompleted():
 	print("Level complete!")

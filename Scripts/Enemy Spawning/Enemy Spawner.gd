@@ -11,6 +11,8 @@ onready var _typeRegex = RegEx.new()
 var _enemyTypes = {} # loaded enemy types go here
 
 signal level_completed
+var _isIdle = true
+
 var _enemyData = []
 
 func _ready():
@@ -19,6 +21,8 @@ func _ready():
 
 # read the level data file, apply the headers and save the enemy data to the list
 func readLvlData(lvl):
+	_isIdle = false
+	
 	var file = File.new()
 	file.open("res://Resources/Level Data/" + str(lvl) + ".bbld", File.READ)
 	var fileText = file.get_as_text()
@@ -49,7 +53,8 @@ func _process(_delta):
 		_enemyData.remove(successIndex) # potential optimisation by removing last element first
 
 	# check for level completion
-	if _enemyData.size() == 0 and self.get_child_count() == 0:
+	if _enemyData.size() == 0 and self.get_child_count() == 0 and not _isIdle:
+		_isIdle = true
 		emit_signal("level_completed")
 
 func _readInstruction(index):
@@ -161,4 +166,4 @@ func activateTrigger(triggerName):
 
 	match triggerName:
 		"enemy_killed":
-			TriggerReader.enemyKilled()
+			TriggerReader.enemy_killed()
