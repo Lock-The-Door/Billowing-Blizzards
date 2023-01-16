@@ -4,8 +4,7 @@
 [ext_resource path="res://Resources/ShopButtonTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Scripts/Upgrade Menu/Shop Item.gd" type="Script" id=4]
 
-[sub_resource type="ImageTexture" id=8]
-resource_local_to_scene = true
+[sub_resource type="StreamTexture" id=8]
 
 [sub_resource type="DynamicFont" id=7]
 size = 32
