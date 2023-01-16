@@ -9,8 +9,11 @@ func _clonePlayer():
 	
 	var player = get_node("/root/Game/Player")
 	var clone = player.duplicate()
-	clone.set_script(null)
+	clone.isNonplayable = true
+	for child in clone.get_children():
+		_removeScript(child)
 	_removeCollision(clone)
+	
 	add_child(clone)
 	
 	# Add ui for upgrade slots
@@ -28,3 +31,7 @@ func _removeCollision(node):
 			child.queue_free()
 		else:
 			_removeCollision(child)
+func _removeScript(node):
+	for child in node.get_children():
+		child.set_script(null)
+		_removeScript(child)

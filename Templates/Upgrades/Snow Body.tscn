@@ -11,7 +11,7 @@ texture = ExtResource( 2 )
 script = ExtResource( 1 )
 _health = 100
 _scaleFactor = 0.5
-_textureScale = 8.0
+_textureScale = 5.0
 _itemConfig = "Snow Body"
 
 [node name="Area2D" type="Area2D" parent="."]

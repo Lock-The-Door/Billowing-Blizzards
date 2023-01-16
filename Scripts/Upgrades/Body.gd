@@ -8,6 +8,9 @@ export (String)var _itemConfig # The positioning and other properties of items o
 var items = {}
 
 func _ready():
+	if _itemConfig is Dictionary:
+		return
+	
 	var file = File.new()
 	file.open("res://Resources/Item Data/" + _itemConfig + ".json", File.READ)
 	_itemConfig = parse_json(file.get_as_text())

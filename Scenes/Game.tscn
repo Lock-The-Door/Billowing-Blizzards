@@ -124,6 +124,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+margin_top = 120.0
 script = ExtResource( 8 )
 
 [node name="Upgrade Slot" parent="Daily Upgrade/VBoxContainer/Body/Player/Control" instance=ExtResource( 9 )]
@@ -132,9 +133,6 @@ margin_top = 50.0
 margin_right = 50.0
 margin_bottom = 150.0
 type = "body"
-
-[node name="Upgrade Slot2" parent="Daily Upgrade/VBoxContainer/Body/Player/Control" instance=ExtResource( 9 )]
-type = "arm"
 
 [node name="Shop" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
 margin_left = 489.0
@@ -167,6 +165,16 @@ size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
 script = ExtResource( 14 )
+
+[node name="Unselected Message" type="Label" parent="Daily Upgrade/VBoxContainer/Body/Shop/VBoxContainer/Items"]
+margin_left = 176.0
+margin_top = 174.0
+margin_right = 642.0
+margin_bottom = 244.0
+theme = ExtResource( 11 )
+text = "Choose an Upgrade Slot"
+align = 1
+valign = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
