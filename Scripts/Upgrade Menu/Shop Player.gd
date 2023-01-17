@@ -14,6 +14,8 @@ func _clonePlayer():
 	clone.isNonplayable = true
 	_removeCollision(clone)
 	
+	clone.position = Vector2(0, 0)
+	
 	add_child(clone)
 	
 	# Add ui for upgrade slots

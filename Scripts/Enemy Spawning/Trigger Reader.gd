@@ -53,6 +53,8 @@ func _enemyKilledReader(triggerId, targetKillCount):
 	# default value
 	if targetKillCount == null:
 		targetKillCount = 1
+	else:
+		targetKillCount = int(targetKillCount)
 
 	var shouldTrigger = enemiesKilled >= targetKillCount
 
