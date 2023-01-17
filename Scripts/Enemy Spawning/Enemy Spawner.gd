@@ -24,7 +24,10 @@ func readLvlData(lvl):
 	_isIdle = false
 	
 	var file = File.new()
-	file.open("res://Resources/Level Data/" + str(lvl) + ".bbld", File.READ)
+	var openStatus = file.open("res://Resources/Level Data/" + str(lvl) + ".bbld", File.READ)
+	if openStatus != OK:
+		return false
+	
 	var fileText = file.get_as_text()
 	file.close()
 	# use regex to remove comments
@@ -43,6 +46,8 @@ func readLvlData(lvl):
 	for type in typeList:
 		type = type.strings[1]
 		_enemyTypes[type] = load("res://Templates/Enemies/{0}.tscn".format([type]))
+		
+	return true
 
 func _process(_delta):
 	# check for an instruction in the level data queue and attempt to read it

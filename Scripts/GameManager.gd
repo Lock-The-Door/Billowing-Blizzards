@@ -4,6 +4,7 @@ onready var spawner = get_node("Enemies")
 onready var upgradeMenu = get_node("Daily Upgrade")
 
 var level = 0
+export (int)var _levelCount
 
 func _ready():
 	randomize()
@@ -19,5 +20,13 @@ func _levelCompleted():
 
 func nextLevel():
 	level += 1
-	spawner.readLvlData(level)
+
+	if level >= _levelCount:
+		print("Game complete!")
+		return
+	
+	var success = spawner.readLvlData(level)
 	get_node("Player").isNonplayable = false
+
+	if not success:
+		print("Level data corrupted or not found!")
