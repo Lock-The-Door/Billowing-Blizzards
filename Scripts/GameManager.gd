@@ -6,6 +6,7 @@ onready var upgradeMenu = get_node("Daily Upgrade")
 var level = 0
 
 func _ready():
+	randomize()
 	spawner.connect("level_completed", self, "_levelCompleted")
 	spawner.readLvlData(0)
 

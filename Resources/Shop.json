@@ -5,7 +5,10 @@
             "description": "sno!",
             "price": 100,
             "level": 0,
-            "image": "res://Assets/Bodies/snowball.png"
+            "image": "res://Assets/Bodies/snowball.png",
+            "parent_items": [
+                null
+            ]
         }
     ],
     "arm": [
@@ -14,21 +17,30 @@
             "description": "Poke your enemies",
             "price": 10,
             "level": 0,
-            "image": "res://Assets/Weapons/stick.png"
+            "image": "res://Assets/Weapons/stick.png",
+            "parent_items": [
+                null
+            ]
         },
         {
             "name": "CanNON",
             "description": "Canned Nitrogen Oxide Nonsense",
             "price": 100,
             "level": 1,
-            "image": "res://Assets/Weapons/can.png"
+            "image": "res://Assets/Weapons/can.png",
+            "parent_items": [
+                null
+            ]
         },
         {
             "name": "Ice Block",
             "description": "It's solid, until it breaks",
             "price": 500,
             "level": 5,
-            "image": "res://Assets/Shields/ice.png"
+            "image": "res://Assets/Shields/ice.png",
+            "parent_items": [
+                null
+            ]
         }
     ]
 }

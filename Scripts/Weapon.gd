@@ -9,6 +9,7 @@ export(int) var projectileLifespan
 export(Vector2) var projectileSpawnOffset
 
 var _isEnemy
+var _isDisabled = false
 var _projectile
 
 var _attackTimer = 0
@@ -19,6 +20,8 @@ func _ready():
 	while parent != null:
 		if parent.is_in_group("player"):
 			_isEnemy = false
+			_isDisabled = parent.isNonplayable
+			return
 		elif parent.is_in_group("enemy"):
 			_isEnemy = true
 		parent = parent.get_parent()
@@ -27,6 +30,9 @@ func _ready():
 		_projectile = load("res://Templates/Projectiles/" + projectileName + ".tscn")
 
 func _process(delta):
+	if _isDisabled:
+		return
+
 	_attackTimer += delta
 
 	# find the closest target

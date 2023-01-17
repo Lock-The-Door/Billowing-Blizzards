@@ -6,13 +6,13 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
 
-[node name="Snow Body" type="Sprite"]
+[node name="Snow Body" type="Sprite" groups=["Body"]]
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 _health = 100
 _scaleFactor = 0.5
 _textureScale = 5.0
-_itemConfig = "Snow Body"
+itemConfig = "Snow Body"
 
 [node name="Area2D" type="Area2D" parent="."]
 

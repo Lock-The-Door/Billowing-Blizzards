@@ -4,10 +4,16 @@
 [ext_resource path="res://Scripts/Upgrade Menu/Upgrade Slot.gd" type="Script" id=2]
 
 [node name="Upgrade Slot" type="Button"]
-margin_right = 100.0
-margin_bottom = 100.0
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = ExtResource( 1 )
 toggle_mode = true
 shortcut_in_tooltip = false
 text = "+"
+icon_align = 1
+expand_icon = true
 script = ExtResource( 2 )
