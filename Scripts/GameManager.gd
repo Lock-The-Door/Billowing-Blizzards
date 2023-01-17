@@ -8,7 +8,7 @@ var level = 0
 func _ready():
 	randomize()
 	spawner.connect("level_completed", self, "_levelCompleted")
-	spawner.readLvlData(0)
+	spawner.readLvlData("test")
 
 func _levelCompleted():
 	print("Level complete!")

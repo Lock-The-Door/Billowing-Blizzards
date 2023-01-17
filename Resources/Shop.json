@@ -6,6 +6,7 @@
             "price": 100,
             "level": 0,
             "image": "res://Assets/Bodies/snowball.png",
+            "resource": "res://Templates/Upgrades/Snow Body.tscn",
             "parent_items": [
                 null
             ]
@@ -18,6 +19,7 @@
             "price": 10,
             "level": 1,
             "image": "res://Assets/Weapons/stick.png",
+            "resource": "res://Templates/Weapons/Stick.tscn",
             "parent_items": [
                 null
             ]

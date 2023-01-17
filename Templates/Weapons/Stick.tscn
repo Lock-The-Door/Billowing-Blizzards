@@ -26,4 +26,5 @@ offset = Vector2( 150, 0 )
 script = ExtResource( 2 )
 attackDamage = 5
 attackRange = 200
+attackCone = 360
 attackSpeed = 1

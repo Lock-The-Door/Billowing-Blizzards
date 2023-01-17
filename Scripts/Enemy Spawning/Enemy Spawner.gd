@@ -156,7 +156,7 @@ func _spawnEnemies(enemyGroup):
 	for _i in enemyGroup["count"]:
 		var enemyInstance = enemyTemplate.instance()
 		self.add_child(enemyInstance)
-		enemyInstance.add_to_group("enemies")
+		enemyInstance.add_to_group("enemy")
 		enemyInstance.set_position(spawnPos)
 
 # Recieve trigger calls and pass them to the trigger reader

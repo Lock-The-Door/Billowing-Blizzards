@@ -10,8 +10,11 @@ var _projectileLifespan
 var _projectileDamage
 var _isEnemyProjectile
 
+var _intendedGlobalPosition
+
 func _ready():
 	self.add_to_group("projectile")
+	_intendedGlobalPosition = global_position
 
 func init(angle, speed, lifespan, damage, isEnemyProjectile = false):
 	_projectileSpeed = speed

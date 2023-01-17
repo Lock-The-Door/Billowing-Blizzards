@@ -2,7 +2,7 @@ extends Node2D
 
 const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
 const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
-const STICK = preload("res://Templates/Weapons/Stick.tscn")
+const STICK = preload("res://Templates/Weapons/CaNON.tscn")
 
 export (int)var _health
 export (int)var _speed
