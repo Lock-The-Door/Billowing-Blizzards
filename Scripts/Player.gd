@@ -21,10 +21,6 @@ func _ready():
 	add_child(newBody)
 	_bodyCount += 1
 	newBody.init(_bodyCount)
-	newBody = BODY.instance()
-	add_child(newBody)
-	_bodyCount += 1
-	newBody.init(_bodyCount)
 
 	var leftStick = STICK.instance()
 	newBody.addItem(leftStick, "left")
