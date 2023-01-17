@@ -26,6 +26,7 @@ font_data = ExtResource( 7 )
 script = ExtResource( 12 )
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1000.0
@@ -56,6 +57,26 @@ input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Head/Area2D"]
 shape = SubResource( 1 )
+
+[node name="Trail Particles" type="CPUParticles2D" parent="Player"]
+z_index = -1
+emitting = false
+amount = 500
+lifetime = 1.25
+speed_scale = 5.0
+explosiveness = 0.25
+local_coords = false
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.25
+angular_velocity_random = 1.0
+scale_amount = 10.0
+scale_amount_random = 1.0
 
 [node name="Daily Upgrade" type="Control" parent="."]
 visible = false
@@ -113,7 +134,7 @@ size_flags_vertical = 3
 custom_constants/separation = 50
 
 [node name="Player" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
-margin_right = 440.0
+margin_right = 439.0
 margin_bottom = 570.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

@@ -34,6 +34,8 @@ func _ready():
 func _process(delta):
 	if isNonplayable:
 		return
+		
+	var startPos = position
 
 	# Movement
 	# Up:
@@ -53,6 +55,8 @@ func _process(delta):
 	# Clamp to world size of 1000 x 1000
 	position.x = clamp(position.x, WORLD_SIZE.x / -2, WORLD_SIZE.x / 2)
 	position.y = clamp(position.y, WORLD_SIZE.y / -2, WORLD_SIZE.y / 2)
+	
+	get_node("Trail Particles").emitting = position != startPos
 
 func damage(damage):
 	_health -= damage
@@ -81,3 +85,6 @@ func resolveBodyParts():
 			var childHeight = child.get_texture().get_size().y * child.scale.y
 			child.position.y = -currentHeight - childHeight / 2 + bottomHeight / 2
 			currentHeight += childHeight
+
+	# Move the particles to the bottom of the body
+	get_node("Trail Particles").position.y = bottomHeight/4
