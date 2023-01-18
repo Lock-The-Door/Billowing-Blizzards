@@ -33,7 +33,15 @@ func init(bodyNumber):
 	_health = _health * scale
 
 func addItem(item, location):
+	# remove previous item
+	if items[location] != null:
+		items[location].queue_free()
+	
 	items[location] = item
+	
+	if item == null:
+		return
+	
 	item.position = itemConfig[location]["position"]
 	item.flip_h = itemConfig[location]["flipH"]
 	item.flip_v = itemConfig[location]["flipV"]

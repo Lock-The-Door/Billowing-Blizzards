@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CaNON.png-0473e42342ccbd4dc3c148f7074a103d.stex"
+path="res://.import/CanNON_SP.png-823982c83b8b451179421c3a1586a95b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/CaNON.png"
-dest_files=[ "res://.import/CaNON.png-0473e42342ccbd4dc3c148f7074a103d.stex" ]
+source_file="res://Assets/Weapons/CanNON_SP.png"
+dest_files=[ "res://.import/CanNON_SP.png-823982c83b8b451179421c3a1586a95b.stex" ]
 
 [params]
 

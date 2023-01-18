@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Assets/Weapons/CaNON.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Weapons/CanNON.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Weapon.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -41,7 +41,7 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[node name="CaNON" type="AnimatedSprite"]
+[node name="CanNON" type="AnimatedSprite"]
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 6 )
 animation = "idle"

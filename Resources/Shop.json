@@ -17,7 +17,7 @@
             "name": "Stick",
             "description": "Poke your enemies",
             "price": 10,
-            "level": 1,
+            "level": 0,
             "image": "res://Assets/Weapons/stick.png",
             "resource": "res://Templates/Weapons/Stick.tscn",
             "parent_items": [
@@ -29,7 +29,8 @@
             "description": "Canned Nitrogen Oxide Nonsense",
             "price": 100,
             "level": 1,
-            "image": "res://Assets/Weapons/can.png",
+            "image": "res://Assets/Weapons/CanNON_SP.png",
+            "resource": "res://Templates/Weapons/CanNON.tscn",
             "parent_items": [
                 null
             ]

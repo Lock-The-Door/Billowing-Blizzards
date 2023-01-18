@@ -2,6 +2,7 @@ extends HBoxContainer
 
 onready var _gameManager = get_node("/root/Game")
 const SHOP_ITEM = preload("res://Templates/Upgrades/Shop Item.tscn")
+onready var _unselectedMessage = get_node("Unselected Message")
 
 var shopData
 var _slotItems = {}
@@ -14,15 +15,15 @@ func _ready():
 	shopFile.close()
 	
 	var upgradeSlotButtons = load("res://Resources/UpgradesButtonGroup.tres")
-	upgradeSlotButtons.connect("pressed", self, "_onUpgradeSlotButtonPressed")
+	upgradeSlotButtons.connect("pressed", self, "populateShop")
 
-func _onUpgradeSlotButtonPressed(button):
+func populateShop(button):
+	clearShop()
+	
+	remove_child(_unselectedMessage)
+	
 	var id = button.get_instance_id()
 	var buttonItem = str(button.itemName)
-	
-	# Clear shop
-	for child in get_children():
-		child.queue_free()
 
 	# Populate slot if it's empty
 	if not (_slotItems.has(id) and _slotItems[id].has(buttonItem)):
@@ -52,3 +53,18 @@ func _onUpgradeSlotButtonPressed(button):
 		var shopItemInstance = SHOP_ITEM.instance()
 		shopItemInstance.init(item)
 		add_child(shopItemInstance)
+
+	# Remove item button
+	get_node("../Header/Remove Item").visible = button.itemName != null
+
+func clearShop(clearSlotData=false):
+	for child in get_children():
+		if child == _unselectedMessage:
+			continue
+		child.queue_free()
+		
+	if clearSlotData:
+		_slotItems = {}
+	
+	if _unselectedMessage.get_parent() == null:
+		add_child(_unselectedMessage)

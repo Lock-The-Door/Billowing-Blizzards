@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/stupid face.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scripts/Upgrade Menu/Continue.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/Upgrade Menu/Shop Populator.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/Upgrade Menu/Title Updater.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/Upgrade Menu/Item Remover.gd" type="Script" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 112.0
@@ -137,14 +138,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 50
 
-[node name="Player" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
+[node name="Player Background" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
 margin_right = 439.0
 margin_bottom = 570.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.341176, 0.278431, 0.231373, 1 )
 
-[node name="Control" type="Control" parent="Daily Upgrade/VBoxContainer/Body/Player"]
+[node name="Player View" type="Control" parent="Daily Upgrade/VBoxContainer/Body/Player Background"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -152,14 +153,14 @@ anchor_bottom = 0.5
 margin_top = 120.0
 script = ExtResource( 8 )
 
-[node name="Upgrade Slot" parent="Daily Upgrade/VBoxContainer/Body/Player/Control" instance=ExtResource( 9 )]
+[node name="Upgrade Slot" parent="Daily Upgrade/VBoxContainer/Body/Player Background/Player View" instance=ExtResource( 9 )]
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 50.0
 margin_bottom = 150.0
 type = "body"
 
-[node name="Shop" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
+[node name="Shop Background" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
 margin_left = 489.0
 margin_right = 1368.0
 margin_bottom = 570.0
@@ -168,40 +169,58 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 color = Color( 0.341176, 0.278431, 0.231373, 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop"]
+[node name="Shop" type="VBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
+margin_top = 15.0
 margin_right = -30.0
 margin_bottom = -50.0
 custom_constants/separation = 25
 
-[node name="Label" type="Label" parent="Daily Upgrade/VBoxContainer/Body/Shop/VBoxContainer"]
+[node name="Header" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop"]
 margin_right = 819.0
 margin_bottom = 76.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Header"]
+margin_right = 819.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 custom_fonts/font = SubResource( 2 )
 text = "Upgrades"
 
-[node name="Items" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop/VBoxContainer"]
+[node name="Remove Item" type="Button" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Header"]
+visible = false
+margin_left = 547.0
+margin_right = 819.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme = ExtResource( 11 )
+text = "Remove"
+script = ExtResource( 16 )
+
+[node name="Items" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop"]
 margin_top = 101.0
 margin_right = 819.0
-margin_bottom = 520.0
+margin_bottom = 505.0
 size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
 script = ExtResource( 14 )
 
-[node name="Unselected Message" type="Label" parent="Daily Upgrade/VBoxContainer/Body/Shop/VBoxContainer/Items"]
+[node name="Unselected Message" type="Label" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Items"]
 margin_left = 176.0
-margin_top = 174.0
+margin_top = 167.0
 margin_right = 642.0
-margin_bottom = 244.0
+margin_bottom = 237.0
 theme = ExtResource( 11 )
 text = "Choose an Upgrade Slot"
 align = 1
 valign = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-unique_name_in_owner = true
 current = true
 script = ExtResource( 3 )
