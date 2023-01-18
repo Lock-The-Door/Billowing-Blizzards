@@ -1,0 +1,18 @@
+{
+    "left": {
+        "position": {
+            "x": -25,
+            "y": 0
+        },
+        "flipH": true,
+        "flipV": false
+    },
+    "right": {
+        "position": {
+            "x": 25,
+            "y": 0
+        },
+        "flipH": false,
+        "flipV": false
+    }
+}

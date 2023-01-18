@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/stupid face.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -7,11 +7,15 @@
 [ext_resource path="res://Assets/snow bg.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Background.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Blockletter.otf" type="DynamicFontData" id=7]
-[ext_resource path="res://Scripts/ShopPlayer.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Upgrade Menu/Shop Player.gd" type="Script" id=8]
 [ext_resource path="res://Templates/Upgrades/Upgrade Slot.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Templates/Upgrades/Shop Item.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/Center Ui.gd" type="Script" id=10]
 [ext_resource path="res://Resources/ShopButtonTheme.tres" type="Theme" id=11]
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Upgrade Menu/Continue.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Upgrade Menu/Shop Populator.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Upgrade Menu/Title Updater.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/Upgrade Menu/Item Remover.gd" type="Script" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 112.0
@@ -20,10 +24,9 @@ radius = 112.0
 size = 52
 font_data = ExtResource( 7 )
 
-[sub_resource type="ButtonGroup" id=3]
-
 [node name="Game" type="Node2D"]
 script = ExtResource( 12 )
+_levelCount = 2
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -38,6 +41,9 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 2
 script = ExtResource( 6 )
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 4 )
 
 [node name="Player" type="Node2D" parent="." groups=["player"]]
 scale = Vector2( 0.25, 0.25 )
@@ -54,17 +60,37 @@ input_pickable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Head/Area2D"]
 shape = SubResource( 1 )
 
-[node name="Enemies" type="Node2D" parent="."]
-script = ExtResource( 4 )
+[node name="Trail Particles" type="CPUParticles2D" parent="Player"]
+z_index = -1
+emitting = false
+amount = 500
+lifetime = 1.25
+speed_scale = 5.0
+explosiveness = 0.25
+local_coords = false
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.25
+angular_velocity_random = 1.0
+scale_amount = 10.0
+scale_amount_random = 1.0
 
 [node name="Daily Upgrade" type="Control" parent="."]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -720.0
 margin_top = -360.0
 margin_right = 720.0
 margin_bottom = 360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 10 )
 
 [node name="ColorRect" type="ColorRect" parent="Daily Upgrade"]
 anchor_right = 1.0
@@ -89,20 +115,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.13
 
-[node name="Label" type="Label" parent="Daily Upgrade/VBoxContainer/Header"]
+[node name="Title" type="Label" parent="Daily Upgrade/VBoxContainer/Header"]
 anchor_right = 0.8
 custom_fonts/font = SubResource( 2 )
 text = "Night X"
+script = ExtResource( 15 )
 
-[node name="Button" type="Button" parent="Daily Upgrade/VBoxContainer/Header"]
+[node name="Continue" type="Button" parent="Daily Upgrade/VBoxContainer/Header"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -200.0
 margin_bottom = 76.0
 theme = ExtResource( 11 )
 text = "Continue"
+script = ExtResource( 13 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer"]
+[node name="Body" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer"]
 margin_top = 90.0
 margin_right = 1368.0
 margin_bottom = 660.0
@@ -110,31 +138,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 50
 
-[node name="Player" type="ColorRect" parent="Daily Upgrade/VBoxContainer/HBoxContainer"]
+[node name="Player Background" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
 margin_right = 439.0
 margin_bottom = 570.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.341176, 0.278431, 0.231373, 1 )
 
-[node name="Control" type="Control" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Player"]
+[node name="Player View" type="Control" parent="Daily Upgrade/VBoxContainer/Body/Player Background"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+margin_top = 120.0
 script = ExtResource( 8 )
 
-[node name="Upgrade Slot" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Player/Control" instance=ExtResource( 9 )]
-margin_left = -50.0
+[node name="Upgrade Slot" parent="Daily Upgrade/VBoxContainer/Body/Player Background/Player View" instance=ExtResource( 9 )]
+anchor_right = 1.0
+anchor_bottom = 0.5
 margin_top = 50.0
-margin_right = 50.0
 margin_bottom = 150.0
-pressed = true
-action_mode = 0
-group = SubResource( 3 )
-icon_align = 1
+type = "body"
 
-[node name="Shop" type="ColorRect" parent="Daily Upgrade/VBoxContainer/HBoxContainer"]
+[node name="Shop Background" type="ColorRect" parent="Daily Upgrade/VBoxContainer/Body"]
 margin_left = 489.0
 margin_right = 1368.0
 margin_bottom = 570.0
@@ -143,43 +169,57 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 color = Color( 0.341176, 0.278431, 0.231373, 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Shop"]
+[node name="Shop" type="VBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
+margin_top = 15.0
 margin_right = -30.0
+margin_bottom = -50.0
+custom_constants/separation = 25
 
-[node name="Label" type="Label" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Shop/VBoxContainer"]
+[node name="Header" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop"]
 margin_right = 819.0
 margin_bottom = 76.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Header"]
+margin_right = 819.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 custom_fonts/font = SubResource( 2 )
 text = "Upgrades"
 
-[node name="Items" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Shop/VBoxContainer"]
-margin_top = 80.0
+[node name="Remove Item" type="Button" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Header"]
+visible = false
+margin_left = 547.0
 margin_right = 819.0
-margin_bottom = 570.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme = ExtResource( 11 )
+text = "Remove"
+script = ExtResource( 16 )
+
+[node name="Items" type="HBoxContainer" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop"]
+margin_top = 101.0
+margin_right = 819.0
+margin_bottom = 505.0
 size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
+script = ExtResource( 14 )
 
-[node name="Shop Item" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Shop/VBoxContainer/Items" instance=ExtResource( 10 )]
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 253.0
-margin_bottom = 490.0
-
-[node name="Shop Item2" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Shop/VBoxContainer/Items" instance=ExtResource( 10 )]
-margin_left = 283.0
-margin_top = 0.0
-margin_right = 536.0
-margin_bottom = 490.0
-
-[node name="Shop Item3" parent="Daily Upgrade/VBoxContainer/HBoxContainer/Shop/VBoxContainer/Items" instance=ExtResource( 10 )]
-margin_left = 566.0
-margin_top = 0.0
-margin_right = 819.0
-margin_bottom = 490.0
+[node name="Unselected Message" type="Label" parent="Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Items"]
+margin_left = 176.0
+margin_top = 167.0
+margin_right = 642.0
+margin_bottom = 237.0
+theme = ExtResource( 11 )
+text = "Choose an Upgrade Slot"
+align = 1
+valign = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

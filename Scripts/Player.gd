@@ -1,25 +1,43 @@
 extends Node2D
 
 const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
-const BODY = preload("res://Templates/Upgrades/Body.tscn")
+const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
+const STICK = preload("res://Templates/Weapons/Stick.tscn")
 
 export (int)var _health
 export (int)var _speed
 
 var _bodyCount = 0
 
+var isNonplayable = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if isNonplayable:
+		return
+
 	# add initial body
 	var newBody = BODY.instance()
 	add_child(newBody)
-	newBody.init(++_bodyCount)
+	_bodyCount += 1
+	newBody.init(_bodyCount)
+
+	var leftStick = STICK.instance()
+	newBody.addItem(leftStick, "left")
+	var rightStick = STICK.instance()
+	newBody.addItem(rightStick, "right")
 
 	resolveBodyParts()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if isNonplayable:
+		get_node("Trail Particles").emitting = false
+		return
+		
+	var startPos = position
+
 	# Movement
 	# Up:
 	if Input.is_physical_key_pressed(KEY_W) or Input.is_physical_key_pressed(KEY_UP):
@@ -38,6 +56,8 @@ func _process(delta):
 	# Clamp to world size of 1000 x 1000
 	position.x = clamp(position.x, WORLD_SIZE.x / -2, WORLD_SIZE.x / 2)
 	position.y = clamp(position.y, WORLD_SIZE.y / -2, WORLD_SIZE.y / 2)
+	
+	get_node("Trail Particles").emitting = position != startPos
 
 func damage(damage):
 	_health -= damage
@@ -66,3 +86,6 @@ func resolveBodyParts():
 			var childHeight = child.get_texture().get_size().y * child.scale.y
 			child.position.y = -currentHeight - childHeight / 2 + bottomHeight / 2
 			currentHeight += childHeight
+
+	# Move the particles to the bottom of the body
+	get_node("Trail Particles").position.y = bottomHeight/4

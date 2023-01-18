@@ -1,4 +1,4 @@
-extends "res://Scripts/Enemy.gd"
+extends "res://Scripts/Enemy/Enemy.gd"
 
 export(String) var _projectileName
 export(int) var _projectileSpeed
@@ -26,8 +26,3 @@ func _process(delta):
 		# move closer to player
 		var direction = displacement.normalized()
 		self.position += direction * _speed * delta
-
-		var children = get_children()
-		for child in children:
-			if child.is_in_group("projectile"):
-				child.position -= direction * _speed * delta

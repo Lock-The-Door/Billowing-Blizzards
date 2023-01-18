@@ -1,20 +1,32 @@
 extends Node2D
 
 onready var spawner = get_node("Enemies")
+onready var upgradeMenu = get_node("Daily Upgrade")
 
-var _level = 0
+var level = 0
+export (int)var _levelCount
 
 func _ready():
-    spawner.connect("level_complete", self, "next_level")
-    spawner.readLvlData(_level)
+	randomize()
+	spawner.connect("level_completed", self, "_levelCompleted")
+	spawner.readLvlData(0)
 
-func next_level():
-    print("Level complete!")
-    _level += 1
+func _levelCompleted():
+	print("Level complete!")
 
-    # ensure level exists (hardcoded for now)
-    if _level > 2:
-        print("Game complete!")
-        return
+	get_node("Player").isNonplayable = true
+	
+	upgradeMenu.visible = true
 
-    spawner.readLvlData(_level)
+func nextLevel():
+	level += 1
+
+	if level >= _levelCount:
+		print("Game complete!")
+		return
+	
+	var success = spawner.readLvlData(level)
+	get_node("Player").isNonplayable = false
+
+	if not success:
+		print("Level data corrupted or not found!")
