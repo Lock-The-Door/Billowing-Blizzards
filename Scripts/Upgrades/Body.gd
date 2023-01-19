@@ -1,6 +1,6 @@
 extends Sprite
 
-export (int)var _health
+export (int)var health
 export (float)var _scaleFactor # how much bigger and more health each body gives
 export (float)var _textureScale # how much bigger the texture is
 export (String)var itemConfig # The positioning and other properties of items on the body
@@ -30,7 +30,7 @@ func init(bodyNumber):
 	set_scale(Vector2(scale, scale) * _textureScale)
 
 	# calculate the heath this body gives
-	_health = _health * scale
+	health = health * scale
 
 func addItem(item, location):
 	# remove previous item

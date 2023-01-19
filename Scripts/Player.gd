@@ -4,12 +4,16 @@ const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
 const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
 const STICK = preload("res://Templates/Weapons/Stick.tscn")
 
-export (int)var _health
 export (int)var _speed
 
-var _bodyCount = 0
+var _health
+var _maxHealth = 0
 
+var _bodyCount = 0
 var isNonplayable = false
+
+signal health_changed
+signal max_health_changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,7 +32,8 @@ func _ready():
 	newBody.addItem(rightStick, "right")
 
 	resolveBodyParts()
-
+	
+	_health = _maxHealth
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -65,7 +70,7 @@ func damage(damage):
 		_health = 0
 		# TODO: Die
 	
-	print(_health)
+	emit_signal("health_changed", _health)
 
 # Moves the body parts to the correct positions
 func resolveBodyParts():
@@ -80,12 +85,23 @@ func resolveBodyParts():
 			break
 
 	# Move the body parts to the correct positions
+	# Also calculate the max health
 	var currentHeight = 0
+	_maxHealth = 0
 	for child in children:
 		if child is Sprite or child is AnimatedSprite:
 			var childHeight = child.get_texture().get_size().y * child.scale.y
 			child.position.y = -currentHeight - childHeight / 2 + bottomHeight / 2
 			currentHeight += childHeight
+			
+		if child.is_in_group("Body"):
+			_maxHealth += child.health
+	emit_signal("max_health_changed", _maxHealth)
 
 	# Move the particles to the bottom of the body
 	get_node("Trail Particles").position.y = bottomHeight/4
+
+# return health data for initialzing HUD
+func getHealth():
+	print(_health)
+	return [_health, _maxHealth]

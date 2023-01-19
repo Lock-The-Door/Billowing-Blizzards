@@ -16,5 +16,5 @@ func damage(damage):
 	
 	# dying
 	if (_health <= 0):
-		_enemyRoot.call_deferred("enemyKilledTrigger")
+		_enemyRoot.call_deferred("activateTrigger", "enemy_killed")
 		self.queue_free()

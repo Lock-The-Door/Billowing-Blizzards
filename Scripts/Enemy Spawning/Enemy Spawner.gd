@@ -165,7 +165,12 @@ func _spawnEnemies(enemyGroup):
 		enemyInstance.set_position(spawnPos)
 
 # Recieve trigger calls and pass them to the trigger reader
+# Also activate signals for other trigger observers like HUD elements
+signal enemy_killed
 func activateTrigger(triggerName):
+	if has_signal(triggerName):
+		emit_signal(triggerName)
+	
 	if TriggerReader == null:
 		return
 
