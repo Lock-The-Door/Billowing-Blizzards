@@ -1,7 +1,7 @@
 extends Control
 
 const UPGRADE_SLOT = preload("res://Templates/Upgrades/Upgrade Slot.tscn")
-onready var _shopPopulator = get_node("/root/Game/Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Items")
+onready var _shopPopulator = get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Body/Shop Background/Shop/Items")
 
 func _ready():
 	var status = get_node("/root/Game/Enemies").connect("level_completed", self, "clonePlayer")

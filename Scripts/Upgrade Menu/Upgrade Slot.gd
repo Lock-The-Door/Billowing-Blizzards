@@ -1,6 +1,6 @@
 extends Button
 
-onready var _shopPopulator = get_node("/root/Game/Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Items")
+onready var _shopPopulator = get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Body/Shop Background/Shop/Items")
 
 export (String)var type
 var item = null

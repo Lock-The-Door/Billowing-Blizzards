@@ -1,8 +1,8 @@
 extends Button
 
 const UBG = preload("res://Resources/UpgradesButtonGroup.tres")
-onready var _shopPopulator = get_node("/root/Game/Daily Upgrade/VBoxContainer/Body/Shop Background/Shop/Items")
-onready var _playerView = get_node("/root/Game/Daily Upgrade/VBoxContainer/Body/Player Background/Player View")
+onready var _shopPopulator = get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Body/Shop Background/Shop/Items")
+onready var _playerView = get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Body/Player Background/Player View")
 var _item = null
 
 func init(itemData):
