@@ -9,7 +9,11 @@ export (int)var _levelCount
 func _ready():
 	randomize()
 	spawner.connect("level_completed", self, "_levelCompleted")
-	spawner.readLvlData("test")
+
+	if Globals.GameDataManager.GameData["Tutorial Completed"]:
+		level = 1
+
+	spawner.readLvlData(0)
 
 func _levelCompleted():
 	print("Level complete!")

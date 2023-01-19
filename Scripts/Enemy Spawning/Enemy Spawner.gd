@@ -170,6 +170,10 @@ signal enemy_killed
 func activateTrigger(triggerName):
 	if has_signal(triggerName):
 		emit_signal(triggerName)
+
+	# pass to tutorial trigger reader if necessary
+	if not Globals.GameDataManager.GameData["Tutorial Completed"]:
+		get_node("/root/Game/Tutorial").activateTrigger(triggerName)
 	
 	if TriggerReader == null:
 		return
@@ -177,3 +181,5 @@ func activateTrigger(triggerName):
 	match triggerName:
 		"enemy_killed":
 			TriggerReader.enemy_killed()
+		"snow_collected":
+			TriggerReader.snow_collected()

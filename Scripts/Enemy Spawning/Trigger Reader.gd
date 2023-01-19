@@ -1,4 +1,4 @@
-var _triggerUids = {}
+var _triggerUids = []
 
 func _init():
 	startTime = Time.get_unix_time_from_system()
@@ -8,6 +8,9 @@ func getUID():
 	var uid = randi()
 	if _triggerUids.has(uid):
 		return getUID()
+
+	_triggerUids.append(uid)
+	return uid
 
 func readTrigger(data, triggerId):
 	# match possible triggers
@@ -21,6 +24,8 @@ func readTrigger(data, triggerId):
 			shouldTrigger = _timestampReader(triggerValue)
 		"enemy_killed":
 			shouldTrigger = _enemyKilledReader(triggerId, triggerValue)
+		"snow_collected":
+			shouldTrigger = _snowCollectedReader(triggerId, triggerValue)
 
 	if shouldTrigger:
 		# free uid
@@ -61,5 +66,33 @@ func _enemyKilledReader(triggerId, targetKillCount):
 	if shouldTrigger:
 		# cleanup
 		_enemyKilledData.erase(triggerId)
+
+	return shouldTrigger
+
+var _snowCollectedData = {}
+func snow_collected():
+	# increment all triggers
+	for triggerId in _snowCollectedData:
+		_snowCollectedData[triggerId] += 1
+func _snowCollectedReader(triggerId, targetSnowCount):
+	# get saved trigger data
+	var snowCollected = _snowCollectedData.get(triggerId, null)
+
+	# if no data, create a key for data
+	if snowCollected == null:
+		_snowCollectedData[triggerId] = 0
+		return false
+
+	# default value
+	if targetSnowCount == null:
+		targetSnowCount = 1
+	else:
+		targetSnowCount = int(targetSnowCount)
+
+	var shouldTrigger = snowCollected >= targetSnowCount
+
+	if shouldTrigger:
+		# cleanup
+		_snowCollectedData.erase(triggerId)
 
 	return shouldTrigger

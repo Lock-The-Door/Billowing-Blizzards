@@ -6,7 +6,7 @@
     },
     "enemies": [
         {
-            "trigger": "timestamp=00:00:00",
+            "trigger": "snow_collected=10",
             "data": [
                 {
                     "type": "Test Enemy",
@@ -18,10 +18,20 @@
         {
             "trigger": "enemy_killed",
             "data": [
+            ]
+        },
+        {
+            "trigger": "snow_collected",
+            "data": [
                 {
                     "type": "Test Enemy",
                     "count": 1,
-                    "location": "world-top"
+                    "location": "world-center"
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 1,
+                    "location": "world-bottom"
                 }
             ]
         }

@@ -4,6 +4,7 @@ const WORLD_SIZE = Globals.WORLD_SIZE
 const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
 const STICK = preload("res://Templates/Weapons/Stick.tscn")
 const DEATH_PARTICLES = preload("res://Templates/Death Particles.tscn")
+onready var _enemySpawner = get_node("/root/Game/Enemies")
 
 export (int)var _speed
 export (float)var _healthPerSnow
@@ -33,8 +34,10 @@ func _ready():
 	bodyCount += 1
 	newBody.init(bodyCount)
 
-	var leftStick = STICK.instance()
-	newBody.addItem(leftStick, "left")
+	# remove a stick during the tutorial
+	if Globals.GameDataManager.GameData["Tutorial Completed"]:
+		var leftStick = STICK.instance()
+		newBody.addItem(leftStick, "left")
 	var rightStick = STICK.instance()
 	newBody.addItem(rightStick, "right")
 
@@ -89,6 +92,7 @@ func _process(delta):
 			_accumulatedSnow += _snowPerStep
 			while _accumulatedSnow >= 1:
 				addSnow(1)
+				_enemySpawner.activateTrigger("snow_collected")
 				_accumulatedSnow -= 1
 
 var _isDead = false

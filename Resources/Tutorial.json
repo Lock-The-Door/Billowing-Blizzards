@@ -1,0 +1,26 @@
+[
+    {
+        "label_text": "Welcome to Billowing Bizzards!\nStart by moving around and collecting snow.\n(WASD/Arrow Keys)",
+        "label_position": "960,750",
+        "label_width": "750",
+        "trigger": "snow_collected=10"
+    },
+    {
+        "label_text": "Most weapons attack automatically, go near an enemy to attack it.\n(Kill an enemy)",
+        "label_position": "960,750",
+        "label_width": "750",
+        "trigger": "enemy_killed"
+    },
+    {
+        "label_text": "When you get hurt, you can also move around to heal but you won't get any snow.\n(Heal to full)",
+        "label_position": "960,750",
+        "label_width": "750",
+        "trigger": "snow_collected"
+    },
+    {
+        "label_text": "Great job! You survived the day, now you can buy upgrades from the shop.\nClick on this slot then buy an upgrade.\n(Buy an upgrade)",
+        "label_position": "400,575",
+        "label_width": "500",
+        "condition": "slot;right;Stick"
+    }
+]
