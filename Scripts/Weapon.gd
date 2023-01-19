@@ -1,9 +1,12 @@
 extends AnimatedSprite
 
+onready var _player = get_node("/root/Game/Player")
+
 export(int) var attackDamage
 export(int) var attackRange
 export(int) var attackCone
 export(int) var attackSpeed
+export(int) var snowCost
 export(String) var projectileName
 export(int) var projectileSpeed
 export(int) var projectileLifespan
@@ -37,6 +40,8 @@ func _ready():
 			_angleOffset += 180
 
 func _process(delta):
+	if not _isEnemy:
+		_isDisabled = _player.isNonplayable
 	if _isDisabled:
 		return
 
@@ -61,8 +66,18 @@ func _process(delta):
 			closestDistance = distance
 			closestAngle = angle
 
+	# ammo check for player
+	var sufficientAmmo = true
+	if not _isEnemy and _player.getSnow() < snowCost:
+		print(_player.getSnow())
+		sufficientAmmo = false
+
 	# attack the closest target
-	if closestTarget != null:
+	if closestTarget != null and sufficientAmmo:
+		# consume snow if on player
+		if not _isEnemy:
+			_player.addSnow(-snowCost)
+		
 		if _attackTimer * attackSpeed >= 1:
 			_attackTimer = 0
 			

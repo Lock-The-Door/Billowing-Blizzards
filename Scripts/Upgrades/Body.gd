@@ -1,6 +1,7 @@
 extends Sprite
 
 export (int)var health
+export (float)var snowAbsorbtion # bonus snow per step (scales with scale)
 export (float)var _scaleFactor # how much bigger and more health each body gives
 export (float)var _textureScale # how much bigger the texture is
 export (String)var itemConfig # The positioning and other properties of items on the body
@@ -12,7 +13,7 @@ func _ready():
 		return
 	
 	var file = File.new()
-	file.open("res://Resources/Item Data/" + itemConfig + ".json", File.READ)
+	file.open("res://Resources/Item Data/" + itemConfig + ".bbid", File.READ)
 	itemConfig = parse_json(file.get_as_text())
 	file.close()
 	for location in itemConfig:
@@ -31,6 +32,9 @@ func init(bodyNumber):
 
 	# calculate the heath this body gives
 	health = health * scale
+
+	# calculate snow absorbtion
+	snowAbsorbtion *= scale
 
 func addItem(item, location):
 	# remove previous item

@@ -1,6 +1,7 @@
 extends Control
 
 const UPGRADE_SLOT = preload("res://Templates/Upgrades/Upgrade Slot.tscn")
+onready var _player = get_node("/root/Game/Player")
 onready var _shopPopulator = get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Body/Shop Background/Shop/Items")
 
 func _ready():
@@ -13,20 +14,32 @@ func clonePlayer():
 	# Remove existing player if needed
 	_removePlayer()
 	
-	var player = get_node("/root/Game/Player")
-	_clone = player.duplicate()
+	_clone = _player.duplicate()
 	_clone.isNonplayable = true
+	_clone.bodyCount = _player.bodyCount
 	_removeCollision(_clone)
 	
 	_clone.position = Vector2(0, 0)
 	
 	add_child(_clone)
 	
+	addSlots()
+	
+	# Clear the shop (the slot buttons are new)
+	_shopPopulator.clearShop(true)
+	
+# upgrade slot ui
+func addSlots():
+	# Remove existing buttons
+	for child in get_children():
+		if child is Button and child.type != "body":
+			child.queue_free()
+	
 	# Add ui for upgrade slots
 	for body in _clone.get_children():
 		if body.is_in_group("Body"):
 			# get reference to original body
-			var originalBody = player.get_child(body.get_index())
+			var originalBody = _player.get_child(body.get_index())
 			
 			# body config
 			var bodySlots = body.itemConfig
@@ -46,9 +59,6 @@ func clonePlayer():
 				add_child(slot)
 				slot.rect_position = bodySlots[location]["position"]*4 - Vector2(50, 50) + body.position/4
 				slot.setItem(body.items[location])
-				
-	# Clear the shop (the slot buttons are new)
-	_shopPopulator.clearShop(true)
 	
 func _removePlayer():
 	if _clone == null:

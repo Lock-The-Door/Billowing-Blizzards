@@ -7,9 +7,9 @@ func _ready():
 	player.connect("health_changed", self, "_updateValue")
 	
 	# fetch inital values since signals won't be recieved on ready
-	var healthData = player.getHealth()
-	_updateMaxValue(healthData[1])
-	_updateValue(healthData[0])
+	var health = player.getHealth()
+	_updateMaxValue(health)
+	_updateValue(health)
 	
 # Update value
 func _updateValue(newHealth):

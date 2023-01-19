@@ -5,15 +5,21 @@ const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
 const STICK = preload("res://Templates/Weapons/Stick.tscn")
 
 export (int)var _speed
+export (float)var _healthPerSnow
+export (int)var maxBodies
 
 var _health
 var _maxHealth = 0
 
-var _bodyCount = 0
+var _snow = 0
+var _snowPerStep
+
+var bodyCount = 0
 var isNonplayable = false
 
-signal health_changed
-signal max_health_changed
+signal health_changed(newHealth)
+signal max_health_changed(newMaxHealth)
+signal snow_changed(newSnow)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,8 +29,8 @@ func _ready():
 	# add initial body
 	var newBody = BODY.instance()
 	add_child(newBody)
-	_bodyCount += 1
-	newBody.init(_bodyCount)
+	bodyCount += 1
+	newBody.init(bodyCount)
 
 	var leftStick = STICK.instance()
 	newBody.addItem(leftStick, "left")
@@ -35,7 +41,9 @@ func _ready():
 	
 	_health = _maxHealth
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# These variables account for non-integer values
+var _accumulatedHealth = 0.0
+var _accumulatedSnow = 0.0
 func _process(delta):
 	if isNonplayable:
 		get_node("Trail Particles").emitting = false
@@ -62,15 +70,37 @@ func _process(delta):
 	position.x = clamp(position.x, WORLD_SIZE.x / -2, WORLD_SIZE.x / 2)
 	position.y = clamp(position.y, WORLD_SIZE.y / -2, WORLD_SIZE.y / 2)
 	
-	get_node("Trail Particles").emitting = position != startPos
+	var playerMoved = position != startPos
+	get_node("Trail Particles").emitting = playerMoved
+	
+	# Snow collection and healing
+	if playerMoved:
+		# Heal if not full health
+		if _health < _maxHealth:
+			_accumulatedHealth += _snowPerStep * _healthPerSnow
+			while _accumulatedHealth >= 1:
+				_health += 1
+				_accumulatedHealth -= 1
+			_health = min(_health, _maxHealth)
+			
+			emit_signal("health_changed", _health)
+		else:
+			_accumulatedSnow += _snowPerStep
+			while _accumulatedSnow >= 1:
+				addSnow(1)
+				_accumulatedSnow -= 1
 
 func damage(damage):
-	_health -= damage
+	addHealth(-damage)
 	if _health <= 0:
 		_health = 0
 		# TODO: Die
 	
-	emit_signal("health_changed", _health)
+func addSnow(deltaSnow):
+	_snow += deltaSnow
+	emit_signal("snow_changed", _snow)
+func getSnow():
+	return _snow
 
 # Moves the body parts to the correct positions
 func resolveBodyParts():
@@ -88,6 +118,7 @@ func resolveBodyParts():
 	# Also calculate the max health
 	var currentHeight = 0
 	_maxHealth = 0
+	_snowPerStep = 0
 	for child in children:
 		if child is Sprite or child is AnimatedSprite:
 			var childHeight = child.get_texture().get_size().y * child.scale.y
@@ -96,6 +127,7 @@ func resolveBodyParts():
 			
 		if child.is_in_group("Body"):
 			_maxHealth += child.health
+			_snowPerStep += child.snowAbsorbtion
 	emit_signal("max_health_changed", _maxHealth)
 
 	# Move the particles to the bottom of the body
@@ -103,5 +135,7 @@ func resolveBodyParts():
 
 # return health data for initialzing HUD
 func getHealth():
-	print(_health)
-	return [_health, _maxHealth]
+	return _health
+func addHealth(deltaHealth):
+	_health += deltaHealth
+	emit_signal("health_changed", _health)

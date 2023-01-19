@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Assets/stupid face.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://Scripts/HUD/Kill Count.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/HUD/Health.gd" type="Script" id=22]
 [ext_resource path="res://Scripts/HUD/Day Count.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/HUD/Snow.gd" type="Script" id=24]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 112.0
@@ -85,6 +86,8 @@ script = ExtResource( 4 )
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 2 )
 _speed = 500
+_healthPerSnow = 1.0
+maxBodies = 3
 
 [node name="Head" type="Sprite" parent="Player"]
 texture = ExtResource( 1 )
@@ -209,6 +212,7 @@ margin_right = 103.0
 margin_bottom = 70.0
 theme = ExtResource( 11 )
 text = "0"
+script = ExtResource( 24 )
 
 [node name="Bottom Panel" type="Panel" parent="Gameplay HUD"]
 anchor_left = 0.5

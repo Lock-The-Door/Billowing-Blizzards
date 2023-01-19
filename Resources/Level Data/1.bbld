@@ -6,7 +6,11 @@
         {
             "trigger": "timestamp=00:00:05",
             "data": [
-                
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-top"
+                }
             ]
         },
         {

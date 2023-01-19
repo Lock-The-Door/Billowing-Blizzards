@@ -52,6 +52,7 @@ attackDamage = 15
 attackRange = 500
 attackCone = 180
 attackSpeed = 1
+snowCost = 1
 projectileName = "Snowball"
 projectileSpeed = 500
 projectileLifespan = 5
