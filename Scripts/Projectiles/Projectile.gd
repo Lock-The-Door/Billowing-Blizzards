@@ -1,6 +1,6 @@
 extends Node2D
 
-const WORLD_LENGTH = preload("res://Scripts/Constants.gd").WORLD_LENGTH
+const WORLD_LENGTH = preload("res://Scripts/Globals.gd").WORLD_LENGTH
 
 onready var _player = get_node("/root/Game/Player")
 onready var _collisionNode = get_node("Area2D")

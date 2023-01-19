@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Title Screen.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Scripts/Globals.gd"
+
 [debug]
 
 settings/stdout/print_fps=true

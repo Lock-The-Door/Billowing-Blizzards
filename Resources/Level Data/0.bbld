@@ -8,13 +8,21 @@
         {
             "trigger": "timestamp=00:00:00",
             "data": [
-                
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-top"
+                }
             ]
         },
         {
-            "trigger": "enemy_killed=0",
+            "trigger": "enemy_killed",
             "data": [
-                
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-top"
+                }
             ]
         }
     ]

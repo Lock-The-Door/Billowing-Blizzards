@@ -1,6 +1,7 @@
 extends HBoxContainer
 
 onready var _gameManager = get_node("/root/Game")
+onready var _player = get_node("/root/Game/Player")
 const SHOP_ITEM = preload("res://Templates/Upgrades/Shop Item.tscn")
 onready var _unselectedMessage = get_node("Unselected Message")
 
@@ -52,6 +53,9 @@ func populateShop(button):
 	for item in _slotItems[id][buttonItem]:
 		var shopItemInstance = SHOP_ITEM.instance()
 		shopItemInstance.init(item)
+		# disable items player can't afford
+		if item.price > _player.getSnow():
+			shopItemInstance.get_child(0).disabled = true
 		add_child(shopItemInstance)
 
 	# Remove item button

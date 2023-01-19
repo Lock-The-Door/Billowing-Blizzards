@@ -1,6 +1,6 @@
 extends TextureRect
 
-const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
+const WORLD_SIZE = preload("res://Scripts/Globals.gd").WORLD_SIZE
 
 func _ready():
 	setSize()

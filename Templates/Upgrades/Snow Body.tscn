@@ -9,9 +9,10 @@ radius = 30.0
 [node name="Snow Body" type="Sprite" groups=["Body"]]
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
-_health = 100
+health = 100
+snowAbsorbtion = 0.05
 _scaleFactor = 0.5
-_textureScale = 5.0
+_textureScale = 4.0
 itemConfig = "Snow Body"
 
 [node name="Area2D" type="Area2D" parent="."]
