@@ -1,8 +1,9 @@
 extends Node2D
 
-const WORLD_SIZE = preload("res://Scripts/Constants.gd").WORLD_SIZE
+const WORLD_SIZE = Globals.WORLD_SIZE
 const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
 const STICK = preload("res://Templates/Weapons/Stick.tscn")
+const DEATH_PARTICLES = preload("res://Templates/Death Particles.tscn")
 
 export (int)var _speed
 export (float)var _healthPerSnow
@@ -90,11 +91,26 @@ func _process(delta):
 				addSnow(1)
 				_accumulatedSnow -= 1
 
+var _isDead = false
 func damage(damage):
 	addHealth(-damage)
-	if _health <= 0:
+	if _health <= 0 and not _isDead:
+		_isDead = true # prevents the creation of too many particles
 		_health = 0
-		# TODO: Die
+		
+		# Player is dead
+		var dpInstance = DEATH_PARTICLES.instance()
+		dpInstance.global_position = global_position
+		get_node("../Particles").add_child(dpInstance)
+		self.visible = false
+		
+		# Prepare to transition to game over screen
+		isNonplayable = true
+		Globals.LastPlayStats = {
+			"days": get_parent().level,
+			"kills": get_node("/root/Game/Gameplay HUD/Top Panel/Control/Kill Count/Label")._enemiesKilled
+		}
+		get_node("/root/Game/Game Over Transition").visible = true
 	
 func addSnow(deltaSnow):
 	_snow += deltaSnow

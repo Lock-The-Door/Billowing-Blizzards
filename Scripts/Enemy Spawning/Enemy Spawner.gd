@@ -3,7 +3,7 @@ extends Node2D
 const TRIGGER_READER = preload("./Trigger Reader.gd")
 var TriggerReader
 
-const WORLD_LENGTH = preload("res://Scripts/Constants.gd").WORLD_LENGTH
+const WORLD_LENGTH = preload("res://Scripts/Globals.gd").WORLD_LENGTH
 
 onready var _commentRegex = RegEx.new()
 onready var _typeRegex = RegEx.new()

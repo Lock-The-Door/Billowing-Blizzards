@@ -1,5 +1,7 @@
 extends Sprite
 
+const DEATH_PARTICLES = preload("res://Templates/Death Particles.tscn")
+
 # enemy properties
 export(int) var _health
 export(int) var _speed
@@ -17,4 +19,7 @@ func damage(damage):
 	# dying
 	if (_health <= 0):
 		_enemyRoot.call_deferred("activateTrigger", "enemy_killed")
+		var dpInstance = DEATH_PARTICLES.instance()
+		dpInstance.global_position = global_position
+		get_node("/root/Game/Particles").add_child(dpInstance)
 		self.queue_free()
