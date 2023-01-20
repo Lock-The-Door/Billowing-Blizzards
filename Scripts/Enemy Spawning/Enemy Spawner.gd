@@ -5,6 +5,8 @@ var TriggerReader
 
 const WORLD_LENGTH = preload("res://Scripts/Globals.gd").WORLD_LENGTH
 
+onready var _player = get_node("/root/Game/Player")
+
 onready var _commentRegex = RegEx.new()
 onready var _typeRegex = RegEx.new()
 
@@ -13,6 +15,7 @@ var _enemyTypes = {} # loaded enemy types go here
 signal level_completed
 var _isIdle = true
 
+var _bonusRewardData = ""
 var _enemyData = []
 
 func _ready():
@@ -35,6 +38,7 @@ func readLvlData(lvl):
 	var levelData = parse_json(fileText)
 
 	# TODO: apply or use header data
+	_bonusRewardData = levelData["header"].get("bonus", null)
 
 	# Create a new instance of dependencies
 	TriggerReader = TRIGGER_READER.new()
@@ -60,7 +64,22 @@ func _process(_delta):
 	# check for level completion
 	if _enemyData.size() == 0 and self.get_child_count() == 0 and not _isIdle:
 		_isIdle = true
+		# give the bonus stuff
+		if _bonusRewardData != null:
+			_rewardPlayer(_bonusRewardData)
 		emit_signal("level_completed")
+
+func _rewardPlayer(bonusString):
+	for bonus in bonusString.split(";"):
+		var bonusData = bonus.split("=")
+		var bonusType = bonusData[0]
+		var bonusValue = int(bonusData[1])
+
+		match bonusType:
+			"health":
+				_player.addHealth(bonusValue)
+			"snow":
+				_player.addSnow(bonusValue)
 
 func _readInstruction(index):
 	if (index >= _enemyData.size() or TriggerReader == null):
