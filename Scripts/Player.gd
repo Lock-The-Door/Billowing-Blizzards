@@ -84,6 +84,7 @@ func _process(delta):
 			_accumulatedHealth += _snowPerStep * _healthPerSnow
 			while _accumulatedHealth >= 1:
 				_health += 1
+				_enemySpawner.activateTrigger("snow_collected") # technically you are still collecting snow
 				_accumulatedHealth -= 1
 			_health = min(_health, _maxHealth)
 			

@@ -1,22 +1,108 @@
 {
     "header": {
-        "bonus": "snow=100;health=100"
+        "version": "1.0",
+        "bonus": "snow=50;health=50"
     },
     "enemies": [
         {
-            "trigger": "timestamp=00:00:05",
+            "trigger": "timestamp=00:00:00",
             "data": [
                 {
                     "type": "Test Enemy",
                     "count": 1,
                     "location": "world-top"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-bottom"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-left"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-right"
                 }
             ]
         },
         {
-            "trigger": "enemy_killed=0",
+            "trigger": "snow_collected=50",
             "data": [
-                
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 1,
+                    "location": "world-top"
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 1,
+                    "location": "world-bottom"
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 1,
+                    "location": "world-left"
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 1,
+                    "location": "world-right"
+                }
+            ],
+            "async": true
+        },
+        {
+            "trigger": "enemy_killed=4",
+            "data": [
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-top"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-bottom"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-left"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-right"
+                }
+            ]
+        },
+        {
+            "trigger": "timestamp=00:00:45",
+            "data": [
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-top"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-bottom"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-left"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 2,
+                    "location": "world-right"
+                }
             ]
         }
     ]

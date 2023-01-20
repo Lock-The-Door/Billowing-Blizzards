@@ -41,7 +41,7 @@ func readLvlData(lvl):
 	_bonusRewardData = levelData["header"].get("bonus", null)
 
 	# Create a new instance of dependencies
-	TriggerReader = TRIGGER_READER.new()
+	TriggerReader = TRIGGER_READER.new(_player)
 
 	_enemyData = levelData["enemies"]
 

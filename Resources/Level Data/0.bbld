@@ -1,8 +1,8 @@
 // This is a tutorial level.
 {
     "header": {
-        "subtitle": "How to snowman",
-        "bonus": "snow=100;health=100"
+        "version": "1.0",
+        "subtitle": "How to snowman"
     },
     "enemies": [
         {
@@ -21,18 +21,8 @@
             ]
         },
         {
-            "trigger": "snow_collected",
+            "trigger": "health=150",
             "data": [
-                {
-                    "type": "Test Enemy",
-                    "count": 1,
-                    "location": "world-center"
-                },
-                {
-                    "type": "Test Ranged Enemy",
-                    "count": 1,
-                    "location": "world-bottom"
-                }
             ]
         }
     ]

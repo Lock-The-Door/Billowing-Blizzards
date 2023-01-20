@@ -1,7 +1,9 @@
+var _player
 var _triggerUids = []
 
-func _init():
+func _init(player):
 	startTime = Time.get_unix_time_from_system()
+	_player = player
 
 func getUID():
 	# use random number
@@ -22,6 +24,8 @@ func readTrigger(data, triggerId):
 	match triggerKey:
 		"timestamp":
 			shouldTrigger = _timestampReader(triggerValue)
+		"health":
+			shouldTrigger = _healthReader(triggerValue)
 		"enemy_killed":
 			shouldTrigger = _enemyKilledReader(triggerId, triggerValue)
 		"snow_collected":
@@ -40,6 +44,10 @@ func _timestampReader(timestampString): # A trigger based on the time elapsed in
 	var timestampDuration = Time.get_unix_time_from_datetime_string(timestampString)
 
 	return timeElapsed >= timestampDuration
+
+func _healthReader(targetHealth): # A trigger based on the player's health
+	targetHealth = int(targetHealth)
+	return _player.getHealth() >= targetHealth
 
 var _enemyKilledData = {}
 func enemy_killed():

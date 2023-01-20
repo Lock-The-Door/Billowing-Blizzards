@@ -12,15 +12,51 @@
         "trigger": "enemy_killed"
     },
     {
+        "label_text": "Here is what every icon on your screen represents.",
+        "label_position": "960,500",
+        "label_width": "800",
+        "condition": "hud_explainer"
+    },
+    {
         "label_text": "When you get hurt, you can also move around to heal but you won't get any snow.\n(Heal to full)",
         "label_position": "960,750",
         "label_width": "750",
-        "trigger": "snow_collected"
+        "condition": "health;150"
     },
     {
-        "label_text": "Great job! You survived the day, now you can buy upgrades from the shop.\nClick on this slot then buy an upgrade.\n(Buy an upgrade)",
-        "label_position": "400,575",
+        "label_text": "Great job! You survived the day, now you can buy upgrades from the shop.\nClick on the left slot then buy an upgrade.\n(Buy an upgrade)",
+        "label_position": "300,300",
         "label_width": "500",
-        "condition": "slot;right;Stick"
+        "condition": "slot;Stick;2;lock"
+    },
+    {
+        "label_text": "As you progress, more powerful items will be available, but so will your enemies.\n(Click continue)",
+        "label_position": "1500,700",
+        "label_width": "600",
+        "condition": "close_shop"
+    },
+    {
+        "label_text": "Complete the next level.",
+        "label_position": "300,500",
+        "label_width": "500",
+        "trigger": "enemy_killed=24"
+    },
+    {
+        "label_text": "Buy the CanNON. (Tip: You can remove existing upgrades from a slot)",
+        "label_position": "300,500",
+        "label_width": "500",
+        "condition": "slot;CanNON;1;unlocked"
+    },
+    {
+        "label_text": "The CanNON is a ranged weapon, but like most other weapons, it uses snow.\n(Kill an enemy)",
+        "label_position": "300, 500",
+        "label_width": "500",
+        "trigger": "enemy_killed"
+    },
+    {
+        "label_text": "That's the basics of the game. Good luck and don't die.\n(Click continue)",
+        "label_position": "960,750",
+        "label_width": "750",
+        "condition": "end_tutorial"
     }
 ]

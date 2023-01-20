@@ -2,8 +2,8 @@ extends Control
 
 func _ready():
 	var status = get_viewport().connect("size_changed", self, "centerScale")
-	if status != OK:
-		print("Error connecting to size_changed signal")
+	assert(status == OK)
+	status = get_node("/root/Game/Camera2D").connect("camera_moved", self, "centerScale")
 
 func centerScale():
 	if not visible:
