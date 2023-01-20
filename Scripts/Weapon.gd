@@ -57,7 +57,8 @@ func _process(delta):
 		var displacement = target.global_position - self.global_position
 		var angle = atan2(displacement.y, displacement.x)
 
-		if abs(rad2deg(angle) - _angleOffset) > attackCone / 2 and abs(rad2deg(angle) + _angleOffset) > attackCone / 2:
+		if rad2deg(angle) < _angleOffset - attackCone/2 or rad2deg(angle) > _angleOffset + attackCone/2:
+			print(str(angle) + " out of cone")
 			continue
 
 		var distance = displacement.length()

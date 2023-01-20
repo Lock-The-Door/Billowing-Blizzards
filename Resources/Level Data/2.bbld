@@ -1,0 +1,122 @@
+// Test Level
+{
+    "header": {
+        "version": "1.0",
+        "bonus": "health=100;snow=100"
+    },
+    "enemies": [
+        {
+            "trigger": "timestamp=00:00:00",
+            "data": [
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-top"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-bottom"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-left"
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": 1,
+                    "location": "world-right"
+                }
+            ]
+        },
+        {
+            "trigger": "timestamp=00:00:05",
+            "data": [
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-top",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-bottom",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-left",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-right",
+                    "radius": 100
+                }
+            ]
+        },
+        {
+            "trigger": "enemy_killed=12",
+            "data": [
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-top",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-bottom",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-left",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-right",
+                    "radius": 100
+                }
+            ],
+            "async": true
+        },
+        {
+            "trigger": "snow_collected=100",
+            "data": [
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-top",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-bottom",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-left",
+                    "radius": 100
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": 3,
+                    "location": "world-right",
+                    "radius": 100
+                }
+            ]
+        }
+    ]
+}
