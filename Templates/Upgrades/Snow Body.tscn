@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/Upgrades/Body.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Upgrades/body.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Projectiles/snowball.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -10,10 +10,10 @@ radius = 30.0
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 health = 100
-snowAbsorbtion = 0.05
-_scaleFactor = 0.5
-_textureScale = 4.0
-itemConfig = "Snow Body"
+snow_absorbtion = 0.05
+_scale_factor = 0.5
+_texture_scale = 4.0
+item_config = "Snow Body"
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -12,3 +12,6 @@ data_*/
 
 # VS code settings
 .vscode/settings.json
+
+# Save data
+*.bbgd

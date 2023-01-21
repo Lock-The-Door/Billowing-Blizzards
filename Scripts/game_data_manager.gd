@@ -1,16 +1,20 @@
+class_name GameDataManager
 extends Resource
 
-const FILE_NAME = ""
 
-var GameData = {
+const FILE_NAME = "save.bbgd"
+
+var game_data = {
 	"Tutorial Completed": false
 }
+
 
 func save():
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
-	file.store_string(to_json(GameData))
+	file.store_string(to_json(game_data))
 	file.close()
+
 
 func load():
 	var file = File.new()
@@ -19,8 +23,8 @@ func load():
 		var data = parse_json(file.get_as_text())
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
-			GameData = data
+			game_data = data
 		else:
-			printerr("Corrupted data!")
+			push_warning("Corrupted data!")
 	else:
-		printerr("No saved data!")
+		push_warning("No saved data!")

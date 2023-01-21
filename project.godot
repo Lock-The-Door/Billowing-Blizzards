@@ -8,6 +8,130 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Sprite",
+"class": "Body",
+"language": "GDScript",
+"path": "res://Scripts/Upgrades/body.gd"
+}, {
+"base": "Control",
+"class": "CenterUi",
+"language": "GDScript",
+"path": "res://Scripts/center_ui.gd"
+}, {
+"base": "CPUParticles2D",
+"class": "DeathParticles",
+"language": "GDScript",
+"path": "res://Scripts/death_particles.gd"
+}, {
+"base": "Sprite",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/Enemy/enemy.gd"
+}, {
+"base": "Node2D",
+"class": "EnemySpawner",
+"language": "GDScript",
+"path": "res://Scripts/Enemy Spawning/enemy_spawner.gd"
+}, {
+"base": "Resource",
+"class": "GameDataManager",
+"language": "GDScript",
+"path": "res://Scripts/game_data_manager.gd"
+}, {
+"base": "Node2D",
+"class": "GameManager",
+"language": "GDScript",
+"path": "res://Scripts/game_manager.gd"
+}, {
+"base": "CenterUi",
+"class": "GameOverTransition",
+"language": "GDScript",
+"path": "res://Scripts/game_over_transition.gd"
+}, {
+"base": "ItemSetter",
+"class": "ItemRemover",
+"language": "GDScript",
+"path": "res://Scripts/Upgrade Menu/item_remover.gd"
+}, {
+"base": "Button",
+"class": "ItemSetter",
+"language": "GDScript",
+"path": "res://Scripts/Upgrade Menu/item_setter.gd"
+}, {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Scripts/player.gd"
+}, {
+"base": "Node2D",
+"class": "PlayerCamera",
+"language": "GDScript",
+"path": "res://Scripts/camera.gd"
+}, {
+"base": "Node2D",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://Scripts/Projectiles/projectile.gd"
+}, {
+"base": "AspectRatioContainer",
+"class": "ShopItem",
+"language": "GDScript",
+"path": "res://Scripts/Upgrade Menu/shop_item.gd"
+}, {
+"base": "Control",
+"class": "ShopPlayer",
+"language": "GDScript",
+"path": "res://Scripts/Upgrade Menu/shop_player.gd"
+}, {
+"base": "HBoxContainer",
+"class": "ShopPopulator",
+"language": "GDScript",
+"path": "res://Scripts/Upgrade Menu/shop_populator.gd"
+}, {
+"base": "Reference",
+"class": "TriggerReader",
+"language": "GDScript",
+"path": "res://Scripts/Enemy Spawning/trigger_reader.gd"
+}, {
+"base": "CenterUi",
+"class": "Tutorial",
+"language": "GDScript",
+"path": "res://Scripts/tutorial.gd"
+}, {
+"base": "Button",
+"class": "UpgradeSlot",
+"language": "GDScript",
+"path": "res://Scripts/Upgrade Menu/upgrade_slot.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Scripts/weapon.gd"
+} ]
+_global_script_class_icons={
+"Body": "",
+"CenterUi": "",
+"DeathParticles": "",
+"Enemy": "",
+"EnemySpawner": "",
+"GameDataManager": "",
+"GameManager": "",
+"GameOverTransition": "",
+"ItemRemover": "",
+"ItemSetter": "",
+"Player": "",
+"PlayerCamera": "",
+"Projectile": "",
+"ShopItem": "",
+"ShopPlayer": "",
+"ShopPopulator": "",
+"TriggerReader": "",
+"Tutorial": "",
+"UpgradeSlot": "",
+"Weapon": ""
+}
+
 [application]
 
 config/name="Billowing Blizzards"
@@ -17,7 +141,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://Scripts/Globals.gd"
+Globals="*res://Scripts/globals.gd"
 
 [debug]
 
