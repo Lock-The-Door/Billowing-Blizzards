@@ -10,4 +10,13 @@ var LastPlayStats = null
 
 
 func _ready():
+	get_tree().set_auto_accept_quit(false) # Don't quit automatically
+
 	GameDataManager = load("res://Scripts/game_data_manager.gd").new()
+	GameDataManager.load() # Load data
+
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		GameDataManager.save() # Save data before quitting
+		get_tree().quit() # Exit

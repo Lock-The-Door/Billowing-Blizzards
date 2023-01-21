@@ -58,7 +58,7 @@ func _ready():
 
 
 func _pressed():
-	self.get_tree().quit()
+	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 "
 
 [node name="Title Screen" type="Control"]

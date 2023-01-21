@@ -2,7 +2,7 @@ class_name GameDataManager
 extends Resource
 
 
-const FILE_NAME = ""
+const FILE_NAME = "save.bbgd"
 
 var game_data = {
 	"Tutorial Completed": false
