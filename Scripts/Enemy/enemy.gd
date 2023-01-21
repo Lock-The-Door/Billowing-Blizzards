@@ -18,6 +18,8 @@ onready var _enemy_root := get_node("/root/Game/Enemies") as EnemySpawner
 
 
 func damage(damage):
+	print(str(self) + " took damage: " + str(damage))
+
 	_health -= damage
 	
 	# dying

@@ -66,7 +66,7 @@ func _process(delta):
 			print(str(angle) + " out of cone")
 			continue
 
-		var distance = displacement.length()
+		var distance = abs(displacement.length())
 		if distance < closest_distance:
 			closest_target = target
 			closest_distance = distance
@@ -75,7 +75,6 @@ func _process(delta):
 	# ammo check for player
 	var sufficient_ammo = true
 	if not _is_enemy and _player.get_snow() < snow_cost:
-		print(_player.get_snow())
 		sufficient_ammo = false
 
 	# attack the closest target
@@ -94,6 +93,7 @@ func _process(delta):
 			if _projectile == null:
 				# melee attack
 				closest_target.damage(attack_damage)
+				print("hitting " + str(closest_target))
 			else:
 				var projectile_instance = _projectile.instance()
 				projectile_instance.position = projectile_spawn_offset

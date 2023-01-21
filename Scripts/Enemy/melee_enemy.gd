@@ -11,7 +11,7 @@ func _process(delta):
 	
 	_attack_timer += delta
 	# within attacking range?
-	if displacement.length() < _attack_range:
+	if abs(displacement.length()) < _attack_range:
 		# try to damage the player
 		if _attack_timer * _attack_speed >= 1:
 			_player.damage(_attack_damage)

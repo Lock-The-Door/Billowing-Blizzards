@@ -17,7 +17,7 @@ func _process(delta):
 	
 	_attack_timer += delta
 	# within attacking range?
-	if displacement.length() < _attack_range:
+	if abs(displacement.length()) < _attack_range:
 		# fire at player
 		if _attack_timer * _attack_speed >= 1:
 			var projectile_instance = _projectile.instance()
