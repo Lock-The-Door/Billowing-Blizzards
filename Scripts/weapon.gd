@@ -80,12 +80,12 @@ func _process(delta):
 
 	# attack the closest target
 	if closest_target != null and sufficient_ammo:
-		# consume snow if on player
-		if not _is_enemy:
-			_player.add_snow(-snow_cost)
-		
 		if _attack_timer * attack_speed >= 1:
 			_attack_timer = 0
+
+			# consume snow if on player
+			if not _is_enemy:
+				_player.add_snow(-snow_cost)
 			
 			set_animation("attack")
 			if not frames.get_animation_loop("attack"):
