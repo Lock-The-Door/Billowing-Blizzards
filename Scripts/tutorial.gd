@@ -122,7 +122,7 @@ func _complete_tutorial():
 
 	queue_free()
 	Globals.GameDataManager.game_data["Tutorial Completed"] = true
-	#Globals.GameDataManager.save()
+	Globals.GameDataManager.save()
 	print("Tutorial complete")
 
 
