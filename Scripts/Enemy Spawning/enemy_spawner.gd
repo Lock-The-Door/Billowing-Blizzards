@@ -18,7 +18,7 @@ var _enemy_types = {} # loaded enemy types go here
 var _bonus_reward_data = ""
 var _enemy_data = []
 
-onready var _player = get_node("/root/Game/Player")
+onready var _player := get_node("/root/Game/Player") as Player
 
 onready var _comment_regex = RegEx.new()
 onready var _type_regex = RegEx.new()

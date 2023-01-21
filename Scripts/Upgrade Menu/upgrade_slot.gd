@@ -12,7 +12,7 @@ var item_name = null
 var item_body
 var item_location
 
-onready var _shop_populator := get_node("%Items") as ShopPopulator
+onready var _shop_populator := get_node("/root/Game/%Items") as ShopPopulator
 
 func _ready():
 	self.group = UBG

@@ -10,10 +10,10 @@ radius = 30.0
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 health = 100
-snowAbsorbtion = 0.05
-_scaleFactor = 0.5
-_textureScale = 4.0
-itemConfig = "Snow Body"
+snow_absorbtion = 0.05
+_scale_factor = 0.5
+_texture_scale = 4.0
+item_config = "Snow Body"
 
 [node name="Area2D" type="Area2D" parent="."]
 

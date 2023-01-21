@@ -10,12 +10,12 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 _health = 50
 _speed = 100
-_attackDamage = 3
-_attackRange = 750
-_attackSpeed = 1
-_projectileName = "Snowball"
-_projectileSpeed = 500
-_projectileLifespan = 1000
+_attack_damage = 3
+_attack_range = 750
+_attack_speed = 1
+_projectile_name = "Snowball"
+_projectile_speed = 500
+_projectile_lifespan = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 

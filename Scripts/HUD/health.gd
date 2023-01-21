@@ -11,15 +11,15 @@ func _ready():
 	assert(status == OK)
 	
 	# fetch inital values since signals won't be recieved on ready
-	var health = player.getHealth()
+	var health = player.get_health()
 	_update_max_value(health)
 	_update_value(health)
 
 
 # Update value
-func _update_value(newHealth):
-	value = newHealth
+func _update_value(new_health):
+	value = new_health
 
 
-func _update_max_value(newMaxHealth):
-	max_value = newMaxHealth
+func _update_max_value(new_max_health):
+	max_value = new_max_health

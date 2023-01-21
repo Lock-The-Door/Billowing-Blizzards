@@ -10,9 +10,9 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 _health = 10
 _speed = 100
-_attackDamage = 5
-_attackRange = 200
-_attackSpeed = 1
+_attack_damage = 5
+_attack_range = 200
+_attack_speed = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 

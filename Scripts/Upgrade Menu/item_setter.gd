@@ -8,7 +8,7 @@ const UBG = preload("res://Resources/UpgradesButtonGroup.tres")
 var _item = null
 
 onready var _real_player = get_node("/root/Game/Player")
-onready var _shop_populator = get_node("%Items")
+onready var _shop_populator = get_node("/root/Game/%Items")
 onready var _player_view = get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Body/Player Background/Player View")
 
 
@@ -68,10 +68,10 @@ func _set_item():
 			selected_slot.set_item(item_instance)
 
 			# set the item in the player bodies
-			selected_slotBody.addItem(item_instance, selected_slot.item_location)
+			selected_slotBody.add_item(item_instance, selected_slot.item_location)
 			if _item != null:
 				item_instance = item_resource.instance()
-			player_body.addItem(item_instance, selected_slot.item_location)
+			player_body.add_item(item_instance, selected_slot.item_location)
 			
 	# refresh shop
 	_shop_populator.populate_shop(selected_slot)

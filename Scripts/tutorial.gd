@@ -45,11 +45,11 @@ func _process(_delta):
 
 	# check if the instruction is complete
 	if _instructions[_current_instruction].get("uid", null) == null:
-		_instructions[_current_instruction]["uid"] = trigger_reader.getUID()
+		_instructions[_current_instruction]["uid"] = trigger_reader.get_uid()
 	var complete
 	# trigger_reader based instructions
 	if _instructions[_current_instruction].has("trigger"):
-		complete = trigger_reader.readTrigger(_instructions[_current_instruction]["trigger"], _instructions[_current_instruction]["uid"])
+		complete = trigger_reader.read_trigger(_instructions[_current_instruction]["trigger"], _instructions[_current_instruction]["uid"])
 	else: # custom tutorial specific instructions
 		complete = _check_condition(_instructions[_current_instruction]["condition"])
 	if complete:

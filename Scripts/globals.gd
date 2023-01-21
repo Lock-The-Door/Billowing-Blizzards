@@ -10,4 +10,4 @@ var LastPlayStats = null
 
 
 func _ready():
-	GameDataManager = load("res://Scripts/Game Data Manager.gd").new()
+	GameDataManager = load("res://Scripts/game_data_manager.gd").new()

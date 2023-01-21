@@ -9,9 +9,6 @@ signal max_health_changed(new_max_health)
 signal snow_changed(new_snow)
 
 const WORLD_SIZE = Globals.WORLD_SIZE
-const BODY = preload("res://Templates/Upgrades/Snow Body.tscn")
-const STICK = preload("res://Templates/Weapons/Stick.tscn")
-const DEATH_PARTICLES = preload("res://Templates/Death Particles.tscn")
 
 export (int)var max_bodies
 export (int)var _speed
@@ -26,7 +23,7 @@ var _max_health = 0
 var _snow = 0
 var _snow_per_step
 
-onready var _enemy_spawner := get_node("/root/Game/Enemies") as EnemySpawner
+onready var _enemy_spawner = get_node("/root/Game/Enemies")
 
 
 func _ready():
@@ -34,17 +31,18 @@ func _ready():
 		return
 
 	# add initial body
-	var new_body = BODY.instance()
+	var new_body = load("res://Templates/Upgrades/Snow Body.tscn").instance()
 	add_child(new_body)
 	body_count += 1
 	new_body.init(body_count)
 
 	# remove a stick during the tutorial
+	var stick = load("res://Templates/Weapons/Stick.tscn")
 	if Globals.GameDataManager.game_data["Tutorial Completed"]:
-		var left_stick = STICK.instance()
-		new_body.addItem(left_stick, "left")
-	var right_stick = STICK.instance()
-	new_body.addItem(right_stick, "right")
+		var left_stick = stick.instance()
+		new_body.add_item(left_stick, "left")
+	var right_stick = stick.instance()
+	new_body.add_item(right_stick, "right")
 
 	resolve_body_parts()
 	
@@ -112,7 +110,7 @@ func damage(damage):
 		_health = 0
 		
 		# Player is dead
-		var dp_instance = DEATH_PARTICLES.instance()
+		var dp_instance = load("res://Templates/Death Particles.tscn").instance()
 		dp_instance.global_position = self.global_position
 		get_node("../Particles").add_child(dp_instance)
 		self.visible = false

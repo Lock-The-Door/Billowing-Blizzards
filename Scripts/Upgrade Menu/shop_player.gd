@@ -48,7 +48,7 @@ func add_slots():
 			var original_body = _player.get_child(body.get_index())
 			
 			# body config
-			var body_slots = body.itemConfig
+			var body_slots = body.item_config
 			for location in original_body.items: # recreate item list
 				var original_item = original_body.items[location]
 				if original_item == null:

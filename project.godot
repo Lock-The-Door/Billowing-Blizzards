@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/game_over_transition.gd"
 }, {
-"base": "Reference",
+"base": "ItemSetter",
 "class": "ItemRemover",
 "language": "GDScript",
 "path": "res://Scripts/Upgrade Menu/item_remover.gd"
