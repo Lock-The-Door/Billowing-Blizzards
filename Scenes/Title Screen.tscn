@@ -27,18 +27,21 @@ font_data = SubResource( 1 )
 [sub_resource type="ButtonGroup" id=10]
 
 [sub_resource type="GDScript" id=9]
-resource_name = "PlayButton"
+resource_name = "play_button"
 script/source = "extends Button
+# A button that starts the game
+
 
 func _pressed():
-	var result = self.get_tree().change_scene(\"res://Scenes/Game.tscn\")
-	if result != OK:
-		push_error(\"Couldn't switch scenes: \" + result)
+	var connection_result = self.get_tree().change_scene(\"res://Scenes/Game.tscn\")
+	assert(connection_result == OK)
 "
 
 [sub_resource type="GDScript" id=8]
-resource_name = "QuitButton"
+resource_name = "quit_button"
 script/source = "extends Button
+# A button that quits the game
+
 
 const DISABLED_PLATFORMS = [
 	\"Android\",
@@ -46,11 +49,13 @@ const DISABLED_PLATFORMS = [
 	\"HTML5\",
 ]
 
+
 func _ready():
 	# disable button if on mobile or web
 	var platformName = OS.get_name()
 	if (platformName in DISABLED_PLATFORMS):
 		self.disabled = true
+
 
 func _pressed():
 	self.get_tree().quit()
