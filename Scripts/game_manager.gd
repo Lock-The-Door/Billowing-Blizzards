@@ -12,7 +12,8 @@ export (int)var _level_count
 
 func _ready():
 	randomize()
-	_spawner.connect("level_completed", self, "_level_completed")
+	var status = _spawner.connect("level_completed", self, "_level_completed")
+	assert(status == OK)
 
 	if Globals.GameDataManager.game_data["Tutorial Completed"]:
 		level = 1
