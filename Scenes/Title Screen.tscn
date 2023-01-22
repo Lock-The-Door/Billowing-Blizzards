@@ -100,8 +100,8 @@ valign = 1
 
 [node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 701.0
-margin_right = 153.0
-margin_bottom = 919.0
+margin_right = 98.0
+margin_bottom = 845.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
@@ -116,6 +116,7 @@ align = 0
 script = SubResource( 9 )
 
 [node name="Options" type="Button" parent="VBoxContainer/Buttons"]
+visible = false
 margin_top = 74.0
 margin_right = 153.0
 margin_bottom = 144.0
@@ -126,9 +127,9 @@ text = "Options"
 align = 0
 
 [node name="Quit" type="Button" parent="VBoxContainer/Buttons"]
-margin_top = 148.0
+margin_top = 74.0
 margin_right = 80.0
-margin_bottom = 218.0
+margin_bottom = 144.0
 size_flags_horizontal = 0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
