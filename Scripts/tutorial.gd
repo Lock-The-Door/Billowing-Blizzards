@@ -65,7 +65,7 @@ func _check_condition(condition):
 	var condition_values = condition.split(";")
 	match condition_values[0]:
 		"hud_explainer":
-			var hud = get_node("../Gameplay HUD")
+			var hud = get_node("../Game/play HUD")
 			var explainer = get_node_or_null("HUD Explainer") # initial hidden explainer
 			if explainer != null:
 				_player.is_nonplayable = true
@@ -88,7 +88,7 @@ func _check_condition(condition):
 
 			if condition_values[3] == "lock":
 				# disable continue button
-				get_node("/root/GameDaily Upgrade/ColorRect/VBoxContainer/Header/Continue")\
+				get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Header/Continue")\
 						.disabled = true
 
 			var item_count = 0
@@ -104,11 +104,11 @@ func _check_condition(condition):
 			var condition_passed = item_count >= target_count
 			if condition_passed:
 				# enable continue button
-				get_node("/root/GameDaily Upgrade/ColorRect/VBoxContainer/Header/Continue")\
+				get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Header/Continue")\
 						.disabled = false
 			return condition_passed
 		"close_shop":
-			var shop = get_node_or_null("/root/GameDaily Upgrade")
+			var shop = get_node_or_null("/root/Game/Daily Upgrade")
 			return not shop.visible
 		"end_tutorial":
 			# change the skip button to a continue button
@@ -119,7 +119,7 @@ func _check_condition(condition):
 func _complete_tutorial():
 	# ensure all tutorial ui locks are removed
 	_player.is_nonplayable = false
-	get_node("/root/GameDaily Upgrade/ColorRect/VBoxContainer/Header/Continue")\
+	get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Header/Continue")\
 			.disabled = false
 
 	queue_free()
