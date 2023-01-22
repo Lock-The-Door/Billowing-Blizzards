@@ -4,7 +4,7 @@ extends Button
 # The slot will contain data like which body and position this slot represents
 
 
-const UBG = preload("res://Resources/UpgradesButtonGroup.tres")
+const UBG = preload("res://Resources/Upgrades Button Group.tres")
 
 export (String)var type
 var item = null

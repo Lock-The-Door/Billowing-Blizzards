@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/snow.bmp-6e144da238ebc77f4fb0ce8a7c53c3c6.stex"
+path="res://.import/head.svg-dd7030d7808e5cf99aca3a4e44bbc3d3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/snow.bmp"
-dest_files=[ "res://.import/snow.bmp-6e144da238ebc77f4fb0ce8a7c53c3c6.stex" ]
+source_file="res://Assets/Bodies/head.svg"
+dest_files=[ "res://.import/head.svg-dd7030d7808e5cf99aca3a4e44bbc3d3.stex" ]
 
 [params]
 

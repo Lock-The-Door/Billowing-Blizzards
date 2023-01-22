@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/head.svg-d150882c9650146c4336ab9f261af093.stex"
+path="res://.import/snow.bmp-11cdf88d34fc719a65e238e5e587043d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/head.svg"
-dest_files=[ "res://.import/head.svg-d150882c9650146c4336ab9f261af093.stex" ]
+source_file="res://Assets/Backgrounds/snow.bmp"
+dest_files=[ "res://.import/snow.bmp-11cdf88d34fc719a65e238e5e587043d.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/snowball.png-bb94f5668078dae2e1332343bf12f574.stex"
+path="res://.import/title screen bg.svg-8fcfed6010dd6a7fc018d5cd90955aa3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/snowball.png"
-dest_files=[ "res://.import/snowball.png-bb94f5668078dae2e1332343bf12f574.stex" ]
+source_file="res://Assets/Backgrounds/title screen bg.svg"
+dest_files=[ "res://.import/title screen bg.svg-8fcfed6010dd6a7fc018d5cd90955aa3.stex" ]
 
 [params]
 

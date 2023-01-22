@@ -2,7 +2,7 @@ class_name Enemy
 extends Sprite
 
 
-const DEATH_PARTICLES = preload("res://Templates/Death Particles.tscn")
+const DEATH_PARTICLES = preload("res://Templates/Effects/Death Particles.tscn")
 
 
 # enemy properties
@@ -18,8 +18,6 @@ onready var _enemy_root := get_node("/root/Game/Enemies") as EnemySpawner
 
 
 func damage(damage):
-	print(str(self) + " took damage: " + str(damage))
-
 	_health -= damage
 	
 	# dying

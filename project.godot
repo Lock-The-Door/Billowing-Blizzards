@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "CPUParticles2D",
 "class": "DeathParticles",
 "language": "GDScript",
-"path": "res://Scripts/death_particles.gd"
+"path": "res://Scripts/Effects/death_particles.gd"
 }, {
 "base": "Node",
 "class": "DiscordRPC",
@@ -59,10 +59,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/game_manager.gd"
 }, {
-"base": "CenterUi",
+"base": "Reference",
 "class": "GameOverTransition",
 "language": "GDScript",
-"path": "res://Scripts/game_over_transition.gd"
+"path": "res://Scripts/Effects/game_over_transition.gd"
 }, {
 "base": "Reference",
 "class": "IPCUtil",

@@ -63,7 +63,6 @@ func _process(delta):
 		var angle = atan2(displacement.y, displacement.x)
 
 		if rad2deg(angle) < _angle_offset - attack_cone/2 or rad2deg(angle) > _angle_offset + attack_cone/2:
-			print(str(angle) + " out of cone")
 			continue
 
 		var distance = abs(displacement.length())
@@ -93,7 +92,6 @@ func _process(delta):
 			if _projectile == null:
 				# melee attack
 				closest_target.damage(attack_damage)
-				print("hitting " + str(closest_target))
 			else:
 				var projectile_instance = _projectile.instance()
 				projectile_instance.position = projectile_spawn_offset
