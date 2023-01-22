@@ -40,7 +40,8 @@
             "description": "It's solid, until it breaks",
             "price": 100,
             "level": 5,
-            "image": "res://Assets/Shields/ice.png",
+            "image": "res://Assets/Shields/Ice Block_SP.png",
+            "resource": "res://Templates/Shields/Ice Block.tscn",
             "parent_items": [
                 null
             ]

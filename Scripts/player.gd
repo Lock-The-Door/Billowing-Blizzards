@@ -33,7 +33,7 @@ func _ready():
 		return
 
 	# add initial body
-	var new_body = load("res://Templates/Upgrades/Snow Body.tscn").instance()
+	var new_body = load("res://Templates/Bodies/Snow Body.tscn").instance()
 	add_child(new_body)
 	body_count += 1
 	new_body.init(body_count)
