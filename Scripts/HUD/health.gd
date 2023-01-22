@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgress
 # Displays the health on a progress bar
 
 
