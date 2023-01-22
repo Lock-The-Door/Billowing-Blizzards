@@ -18,7 +18,7 @@ animations = [ {
 } ]
 
 [node name="Stick" type="AnimatedSprite"]
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
 animation = "idle"
 playing = true

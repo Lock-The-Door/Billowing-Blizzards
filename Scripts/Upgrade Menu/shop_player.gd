@@ -19,8 +19,9 @@ func clone_player():
 	# Remove existing player if needed
 	_remove_player()
 	
-	_clone = _player.duplicate()
+	_clone = _player.duplicate() as Player
 	_clone.is_nonplayable = true
+	_clone.modulate = Color.white
 	_clone.body_count = _player.body_count
 	_remove_collision(_clone)
 	

@@ -17,7 +17,8 @@ var _intended_global_position
 
 
 func _ready():
-	self.add_to_group("projectile")
+	add_to_group("projectile")
+	self.z_index = 1
 	_intended_global_position = global_position
 
 

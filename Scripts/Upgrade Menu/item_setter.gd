@@ -3,7 +3,7 @@ extends Button
 # This class is used to set the item in the slot
 
 
-const UBG = preload("res://Resources/UpgradesButtonGroup.tres")
+const UBG = preload("res://Resources/Upgrades Button Group.tres")
 
 var _item = null
 

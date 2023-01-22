@@ -22,8 +22,9 @@ func _ready():
 	shop_data = parse_json(shop_file.get_as_text())
 	shop_file.close()
 	
-	var upgrade_slot_buttons = load("res://Resources/UpgradesButtonGroup.tres")
-	upgrade_slot_buttons.connect("pressed", self, "populate_shop")
+	var upgrade_slot_buttons = load("res://Resources/Upgrades Button Group.tres")
+	var status = upgrade_slot_buttons.connect("pressed", self, "populate_shop")
+	assert(status == OK)
 
 func populate_shop(button):
 	clear_shop()
@@ -56,7 +57,7 @@ func populate_shop(button):
 	if _slot_items[id][button_item].size() == 0:
 		var no_upgrade_label = Label.new()
 		no_upgrade_label.set_text("No upgrades available")
-		no_upgrade_label.theme = load("res://Resources/ShopButtonTheme.tres")
+		no_upgrade_label.theme = load("res://Resources/Primary Theme.tres")
 		add_child(no_upgrade_label)
 	
 	for item in _slot_items[id][button_item]:
