@@ -3,7 +3,7 @@ extends Button
 
 
 onready var _game_manager := get_node("/root/Game") as GameManager
-onready var _upgrade_menu := get_node("/root/Game/UI/Daily Upgrade") as Control
+onready var _upgrade_menu := get_node("/root/GameDaily Upgrade") as Control
 
 
 func _pressed():
