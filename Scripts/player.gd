@@ -122,9 +122,9 @@ func damage(damage):
 		is_nonplayable = true
 		Globals.LastPlayStats = {
 			"days": get_parent().level,
-			"kills": get_node("/root/Game/UI/Gameplay HUD/Top Panel/Control/Kill Count/Label")._enemies_killed
+			"kills": get_node("/root/GameGameplay HUD/Top Panel/Control/Kill Count/Label")._enemies_killed
 		}
-		get_node("/root/Game/UI/Game Over Transition").visible = true
+		get_node("/root/GameGame Over Transition").visible = true
 
 
 func add_snow(delta_snow):

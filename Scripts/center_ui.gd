@@ -14,9 +14,10 @@ func _ready():
 
 
 func center_scale():
+	pass
 	if not visible:
 		return
-	
+
 	# center on screen
 	var center = _camera.position
 	rect_position = center - rect_size / 2
