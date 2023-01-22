@@ -16,6 +16,8 @@ onready var _player := get_node("/root/Game/Player") as Player
 func _ready():
 	if Globals.GameDataManager.game_data["Tutorial Completed"]:
 		queue_free()
+	else:
+		self.visible = true
 	
 	# connections
 	var status = get_node("Skip").connect("pressed", self, "_skip_tutorial")

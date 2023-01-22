@@ -11,6 +11,7 @@ signal snow_changed(new_snow)
 const WORLD_SIZE = Globals.WORLD_SIZE
 
 export (int)var max_bodies
+export (int)var _body_overlap
 export (int)var _speed
 export (float)var _health_per_snow
 
@@ -144,7 +145,6 @@ func add_health(delta_health):
 # Moves the body parts to the correct positions
 func resolve_body_parts():
 	var children = get_children()
-	children.invert()
 
 	# Get the height of the bottom-most body part
 	var bottom_height = 0
@@ -162,7 +162,7 @@ func resolve_body_parts():
 		if child is Sprite or child is AnimatedSprite:
 			var child_height = child.get_texture().get_size().y * child.scale.y
 			child.position.y = -current_height - child_height / 2 + bottom_height / 2
-			current_height += child_height
+			current_height += child_height - _body_overlap
 			
 		if child.is_in_group("Body"):
 			_max_health += child.health

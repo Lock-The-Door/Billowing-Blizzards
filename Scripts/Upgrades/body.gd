@@ -5,7 +5,6 @@ extends Sprite
 export (int)var health
 export (float)var snow_absorbtion # bonus snow per step (scales with scale)
 export (float)var _scale_factor # how much bigger and more health each body gives
-export (float)var _texture_scale # how much bigger the texture is
 export (String)var item_config # The positioning and other properties of items on the body
 
 var items = {}
@@ -32,7 +31,10 @@ func init(body_number):
 	var scale = _scale_factor * body_number + 1
 
 	# set the scale
-	set_scale(Vector2(scale, scale) * _texture_scale)
+	set_scale(Vector2(scale, scale))
+
+	# child tree positioning for correct overlapping
+	get_parent().move_child(self, 1)
 
 	# calculate the heath this body gives
 	health = health * scale
@@ -51,7 +53,7 @@ func add_item(item, location):
 	if item == null:
 		return
 	
-	item.position = item_config[location]["position"]
+	item.position = item_config[location]["position"] * self.scale
 	item.flip_h = item_config[location]["flipH"]
 	item.flip_v = item_config[location]["flipV"]
 	if item.flip_h:
