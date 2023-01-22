@@ -9,7 +9,7 @@ var _item = null
 
 onready var _real_player = get_node("/root/Game/Player")
 onready var _shop_populator = get_node("/root/Game/%Items")
-onready var _player_view = get_node("/root/Game/Daily Upgrade/ColorRect/VBoxContainer/Body/Player Background/Player View")
+onready var _player_view = get_node("/root/Game/UI/Daily Upgrade/ColorRect/VBoxContainer/Body/Player Background/Player View")
 
 
 func init(item_data):

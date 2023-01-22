@@ -233,7 +233,7 @@ func activate_trigger(trigger_name):
 
 	# pass to tutorial trigger reader if necessary
 	if not Globals.GameDataManager.game_data["Tutorial Completed"]:
-		get_node("/root/Game/Tutorial").activate_trigger(trigger_name)
+		get_node("/root/Game/UI/Tutorial").activate_trigger(trigger_name)
 	
 	if trigger_reader == null:
 		return

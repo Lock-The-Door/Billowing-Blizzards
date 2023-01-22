@@ -4,7 +4,7 @@ extends Node2D
 
 
 onready var _spawner := get_node("Enemies") as EnemySpawner
-onready var _upgrade_menu := get_node("Daily Upgrade") as Control
+onready var _upgrade_menu := get_node("UI/Daily Upgrade") as Control
 
 var level = 0
 export (int)var _level_count
@@ -18,7 +18,7 @@ func _ready():
 	if Globals.GameDataManager.game_data["Tutorial Completed"]:
 		level = 1
 
-	_spawner.read_lvl_data(3)
+	_spawner.read_lvl_data(level)
 
 
 func _level_completed():
