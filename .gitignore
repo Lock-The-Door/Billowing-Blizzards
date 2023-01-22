@@ -16,3 +16,6 @@ data_*/
 
 # Save data
 *.bbgd
+
+# Builds
+Builds/
