@@ -18,7 +18,7 @@ func _ready():
 	if Globals.GameDataManager.game_data["Tutorial Completed"]:
 		level = 1
 
-	_spawner.read_lvl_data(level)
+	_spawner.read_lvl_data(3)
 
 
 func _level_completed():

@@ -2,6 +2,8 @@
 
 \*Although I am calling these levels, they will be refered to as days in the game.
 
+**The full specification for the level data format is still not fully implemented.**
+
 ## Why?
 
 Because I can
@@ -16,11 +18,11 @@ This is because the level data will be loaded by matching the file name with the
 
 I am lazy so I will be using JSON as the underlying file format.
 
-### File structure
+## File structure
 
 The file is split up into two primary sections: the header and the enemy data. Additionally, comment lines can be made by preceeding the comment text with `//` and multiline comments can be made with ``/* comment text */``.
 
-#### Header
+### Header
 
 The header section is used to setup the environment for the level but can also be used for some metadata.
 Every key in the header data is optional. If a key is not present, the default value will be used.
@@ -35,7 +37,7 @@ Keys:
 
 More keys will be added in the future.
 
-#### Enemy section
+### Enemy section
 
 The enemy section is used for spawning enemies. It is an array of dictionaries. This dictionary should contain one or more spawning keys (`timestamp` or `trigger`), a `async` key to await for multiple triggers, and an enemy data key named `data`.
 The following sections will describe each key.
@@ -134,3 +136,52 @@ Each value will be an array of "spawning groups". Each spawning group will be a 
   - `player` - The player (Default).
   - `projectile` - The player's projectiles.
 - `overrides` - A dictionary of overrides. This is optional. The key is the name of the override and the value is the value of the override. For example, if the key is `health=100` the enemy will have 100 health. If unset, the default values will be used.
+
+## Infinite Level Data
+
+Billowing Blizzards is capable of procedurally generating levels by evaluating expressions given in a 
+.bbid (Billowing Blizzards Infinite Data)
+
+Despite the name, the level itself is not infinite, it instead means that a single file will be capable of generating
+an inifinite number of levels
+
+### Naming scheme
+Just like normal levels, infinite level data files should be named after a day number.
+However, in this case, the day number represents the starting level that the infinite data should be used.
+
+For example, if my levels looked like this:
+```
+0.bbld
+1.bbld
+2.bbld
+*3.bbid*
+10.bbld
+*11.bbid*
+*15.bbid*
+```
+
+Then that would mean that levels 0, 1, 2, and 10, will remain as static non-procedural levels.
+While levels 3-9, 11-14, and 15+ will be procedurally generated with each section being capable of different generation strategies
+
+### Differences
+Infinite data mostly be the same, however, when you specify a a value for something, you can use expressions. For example:
+```json
+{
+  "header": {
+    "title": "Infinite Level Data Example!",
+    "bonus": "health=randi()%50+50;snow=randi()%100" // On completion, the player will receive between 50-100 health and 0-100 snow
+  },
+  "enemies": [
+    {
+      "trigger": "timestamp=random_timestamp('00:00:00', '00:00:10')" 
+      /* A random timestamp method will be provided use it with strings timestamps.
+         In this case, It this trigger would trigger between 0 to 10 seconds */
+      "data": [
+        {
+          
+        }
+      ]
+    }
+  ]
+}
+```

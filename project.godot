@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot_editor_discord_presence/Discord RPC/util/IPCUtil.gd"
 }, {
+"base": "Reference",
+"class": "InfiniteDataCompiler",
+"language": "GDScript",
+"path": "res://Scripts/Enemy Spawning/infinite_data_compiler.gd"
+}, {
 "base": "ItemSetter",
 "class": "ItemRemover",
 "language": "GDScript",
@@ -188,6 +193,7 @@ _global_script_class_icons={
 "GameManager": "",
 "GameOverTransition": "",
 "IPCUtil": "",
+"InfiniteDataCompiler": "",
 "ItemRemover": "",
 "ItemSetter": "",
 "Player": "",

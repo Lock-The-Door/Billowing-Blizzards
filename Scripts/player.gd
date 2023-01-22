@@ -122,7 +122,7 @@ func damage(damage):
 		is_nonplayable = true
 		Globals.LastPlayStats = {
 			"days": get_parent().level,
-			"kills": get_node("/root/Game/Gameplay HUD/Top Panel/Control/Kill Count/Label")._enemies_killed
+			"kills": get_node("/root/Game/UI/Gameplay HUD/Top Panel/Control/Kill Count/Label")._enemies_killed
 		}
 		get_node("/root/Game/Game Over Transition").visible = true
 

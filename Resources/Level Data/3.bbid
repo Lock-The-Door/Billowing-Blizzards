@@ -1,0 +1,60 @@
+{
+    "header": {
+        "version": "1.0",
+        "bonus": "health=randi()%50+50;snow=randi()%100" // 50-100 health, 0-100 snow
+    },
+    "enemies": [
+        {
+            "trigger": "timestamp=00:00:00",
+            "data": [
+                {
+                    "type": "Test Enemy",
+                    "count": "level*5",
+                    "location": "screen-random",
+                    "radius": 1000
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": "level*2",
+                    "location": "screen-center",
+                    "radius": 500
+                }
+            ]
+        },
+        {
+            "trigger": "enemy_killed=20",
+            "data": [
+                {
+                    "type": "Test Enemy",
+                    "count": "level*3",
+                    "location": "world-center",
+                    "radius": 1000
+                },
+                {
+                    "type": "Test Enemy",
+                    "count": "level*2",
+                    "location": "world-random",
+                    "radius": 500
+                }
+            ],
+            "async": true
+        },
+        {
+            "trigger": "timestamp=random_timestamp('00:00:10', '00:00:30')",
+            "data": [
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": "level*3",
+                    "location": "world-random",
+                    "radius": 1000
+                },
+                {
+                    "type": "Test Ranged Enemy",
+                    "count": "level",
+                    "location": "world-center",
+                    "radius": 500
+                }
+            ]
+        }
+    ]
+}
