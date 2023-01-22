@@ -60,29 +60,29 @@
             ]
         },
         {
-            "trigger": "enemy_killed=12",
+            "trigger": "enemy_killed=15",
             "data": [
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
+                    "count": 2,
                     "location": "world-top",
                     "radius": 100
                 },
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
+                    "count": 2,
                     "location": "world-bottom",
                     "radius": 100
                 },
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
+                    "count": 2,
                     "location": "world-left",
                     "radius": 100
                 },
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
+                    "count": 2,
                     "location": "world-right",
                     "radius": 100
                 }
@@ -96,25 +96,25 @@
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-top",
-                    "radius": 100
+                    "radius": 200
                 },
                 {
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-bottom",
-                    "radius": 100
+                    "radius": 200
                 },
                 {
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-left",
-                    "radius": 100
+                    "radius": 200
                 },
                 {
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-right",
-                    "radius": 100
+                    "radius": 200
                 }
             ]
         }
