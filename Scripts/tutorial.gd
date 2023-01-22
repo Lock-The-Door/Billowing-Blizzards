@@ -65,7 +65,7 @@ func _check_condition(condition):
 	var condition_values = condition.split(";")
 	match condition_values[0]:
 		"hud_explainer":
-			var hud = get_node("../Game/play HUD")
+			var hud = get_node("../Gameplay HUD")
 			var explainer = get_node_or_null("HUD Explainer") # initial hidden explainer
 			if explainer != null:
 				_player.is_nonplayable = true
