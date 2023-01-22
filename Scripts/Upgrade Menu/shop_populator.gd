@@ -57,7 +57,7 @@ func populate_shop(button):
 	if _slot_items[id][button_item].size() == 0:
 		var no_upgrade_label = Label.new()
 		no_upgrade_label.set_text("No upgrades available")
-		no_upgrade_label.theme = load("res://Resources/ShopButtonTheme.tres")
+		no_upgrade_label.theme = load("res://Resources/Primary Theme.tres")
 		add_child(no_upgrade_label)
 	
 	for item in _slot_items[id][button_item]:

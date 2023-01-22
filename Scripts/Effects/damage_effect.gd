@@ -21,7 +21,10 @@ func _ready():
 
 
 func play_effect():
-	stop_all()
+	var status = stop_all()
+	assert(status)
 	
-	interpolate_property(_parent_node, "modulate", _damage_color, _normal_color, 0.5, TRANS_LINEAR)
-	start()
+	status = interpolate_property(_parent_node, "modulate", _damage_color, _normal_color,\
+			0.5, TRANS_LINEAR)
+	status = start() and status
+	assert(status)
