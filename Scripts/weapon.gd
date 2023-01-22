@@ -88,7 +88,7 @@ func _process(delta):
 			
 			set_animation("attack")
 			if not frames.get_animation_loop("attack"):
-				frame = 0
+				self.frame = 0
 			
 			if _projectile == null:
 				# melee attack
