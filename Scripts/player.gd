@@ -25,6 +25,7 @@ var _snow = 0
 var _snow_per_step
 
 onready var _enemy_spawner = get_node("/root/Game/Enemies")
+onready var _damage_effect := get_node("Damage Effect") as DamageEffect
 
 
 func _ready():
@@ -105,6 +106,7 @@ func _process(delta):
 var _is_dead = false
 
 func damage(damage):
+	_damage_effect.play_effect()
 	add_health(-damage)
 	if _health <= 0 and not _is_dead:
 		_is_dead = true # prevents the creation of too many particles

@@ -3,6 +3,7 @@ extends Sprite
 
 
 const DEATH_PARTICLES = preload("res://Templates/Effects/Death Particles.tscn")
+const DAMAGE_EFFECT = preload("res://Templates/Effects/Damage Effect.tscn")
 
 
 # enemy properties
@@ -16,8 +17,15 @@ export(int) var _attack_speed
 onready var _player := get_node("/root/Game/Player") as Player
 onready var _enemy_root := get_node("/root/Game/Enemies") as EnemySpawner
 
+onready var _dmg_effect_instance := DAMAGE_EFFECT.instance() as DamageEffect
+
+
+func _ready():
+	add_child(_dmg_effect_instance)
+
 
 func damage(damage):
+	_dmg_effect_instance.play_effect()
 	_health -= damage
 	
 	# dying

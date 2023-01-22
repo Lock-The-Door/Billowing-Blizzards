@@ -29,6 +29,7 @@
 [ext_resource path="res://Assets/Bar/Background Bar.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Bar/Background Static.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Bar/Foreground.png" type="Texture" id=29]
+[ext_resource path="res://Templates/Effects/Damage Effect.tscn" type="PackedScene" id=30]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 62.0
@@ -131,6 +132,8 @@ input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Head/Area2D"]
 shape = SubResource( 1 )
+
+[node name="Damage Effect" parent="Player" instance=ExtResource( 30 )]
 
 [node name="Particles" type="Node2D" parent="."]
 
