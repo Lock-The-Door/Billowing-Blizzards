@@ -113,7 +113,7 @@ func damage(damage):
 		_health = 0
 		
 		# Player is dead
-		var dp_instance = load("res://Templates/Death Particles.tscn").instance()
+		var dp_instance = load("res://Templates/Effects/Death Particles.tscn").instance()
 		dp_instance.global_position = self.global_position
 		get_node("../Particles").add_child(dp_instance)
 		self.visible = false
