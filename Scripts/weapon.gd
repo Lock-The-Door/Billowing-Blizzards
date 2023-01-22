@@ -48,6 +48,7 @@ func _process(delta):
 	if not _is_enemy:
 		_is_disabled = _player.is_nonplayable
 	if _is_disabled:
+		set_animation("idle")
 		return
 
 	_attack_timer += delta
