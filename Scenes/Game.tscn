@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Assets/Bodies/head.svg" type="Texture" id=1]
 [ext_resource path="res://Scripts/player.gd" type="Script" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Assets/Bar/Background Static.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Bar/Foreground.png" type="Texture" id=29]
 [ext_resource path="res://Templates/Effects/Damage Effect.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Assets/Music/Climb to Dive.mp3" type="AudioStream" id=31]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 62.0
@@ -564,3 +565,8 @@ follow_viewport_enable = true
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 3 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+autoplay = true
+bus = "Music"
