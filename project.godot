@@ -250,6 +250,11 @@ formats/gzip/compression_level=9
 
 settings/stdout/print_fps=true
 
+[discord_presence]
+
+first_button/label=""
+first_button/url=""
+
 [display]
 
 window/size/width=1920
