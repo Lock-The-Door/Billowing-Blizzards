@@ -28,7 +28,7 @@ func _ready():
 
 func init(body_number):
 	# calculate the actual scale
-	var scale = _scale_factor * body_number + 1
+	var scale = calculate_scale(body_number)
 
 	# set the scale
 	set_scale(Vector2(scale, scale))
@@ -41,6 +41,10 @@ func init(body_number):
 
 	# calculate snow absorbtion
 	snow_absorbtion *= scale
+	
+
+func calculate_scale(body_number):
+	return _scale_factor * body_number + 1
 
 
 func add_item(item, location):

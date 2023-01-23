@@ -62,7 +62,7 @@ func populate_shop(button):
 	
 	for item in _slot_items[id][button_item]:
 		var shop_item_instance = SHOP_ITEM.instance()
-		shop_item_instance.init(item)
+		shop_item_instance.init(item, _player)
 		# disable items player can't afford
 		if item.price > _player.get_snow():
 			shop_item_instance.get_child(0).disabled = true

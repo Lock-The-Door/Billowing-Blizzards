@@ -3,6 +3,8 @@ extends Node2D
 # Manages overall game state
 
 
+signal level_started(new_level)
+
 onready var _spawner := get_node("Enemies") as EnemySpawner
 onready var _upgrade_menu := get_node("Daily Upgrade") as Control
 
@@ -36,8 +38,7 @@ func next_level():
 		print("Game complete!")
 		return
 	
-	var success = _spawner.read_lvl_data(level)
+	_spawner.read_lvl_data(level)
 	get_node("Player").is_nonplayable = false
-
-	if not success:
-		print("Level data corrupted or not found!")
+		
+	emit_signal("level_started", level)

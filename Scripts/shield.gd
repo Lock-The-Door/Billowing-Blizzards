@@ -45,7 +45,7 @@ func _process(delta):
 # Intercept damage to entity
 func damage(damage):
 	# ensure ready to absorb
-	if _absorb_timer < shield_cooldown:
+	if _absorb_timer * shield_cooldown < 1:
 		return
 	
 	var adjusted_damage = damage
