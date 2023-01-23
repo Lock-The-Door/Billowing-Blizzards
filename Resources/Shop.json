@@ -5,7 +5,7 @@
             "description": "sno!",
             "price": 50,
             "level": 1,
-            "image": "res://Assets/Bodies/snowbody.png",
+            "image": "res://Assets/Bodies/snowbody.svg",
             "resource": "res://Templates/Bodies/Snow Body.tscn",
             "parent_items": [
                 null
