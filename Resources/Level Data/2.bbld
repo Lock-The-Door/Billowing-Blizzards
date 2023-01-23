@@ -35,32 +35,28 @@
             "data": [
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
-                    "location": "world-top",
-                    "radius": 100
+                    "count": 1,
+                    "location": "world-top"
                 },
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
-                    "location": "world-bottom",
-                    "radius": 100
+                    "count": 1,
+                    "location": "world-bottom"
                 },
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
-                    "location": "world-left",
-                    "radius": 100
+                    "count": 1,
+                    "location": "world-left"
                 },
                 {
                     "type": "Test Ranged Enemy",
-                    "count": 3,
-                    "location": "world-right",
-                    "radius": 100
+                    "count": 1,
+                    "location": "world-right"
                 }
             ]
         },
         {
-            "trigger": "enemy_killed=15",
+            "trigger": "enemy_killed=8",
             "data": [
                 {
                     "type": "Test Ranged Enemy",
@@ -96,25 +92,25 @@
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-top",
-                    "radius": 200
+                    "radius": 1000
                 },
                 {
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-bottom",
-                    "radius": 200
+                    "radius": 1000
                 },
                 {
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-left",
-                    "radius": 200
+                    "radius": 1000
                 },
                 {
                     "type": "Test Ranged Enemy",
                     "count": 3,
                     "location": "world-right",
-                    "radius": 200
+                    "radius": 1000
                 }
             ]
         }
