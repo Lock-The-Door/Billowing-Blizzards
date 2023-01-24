@@ -27,4 +27,4 @@ script = ExtResource( 2 )
 attack_damage = 5
 attack_range = 200
 attack_cone = 360
-attack_speed = 1
+attack_speed = 2
