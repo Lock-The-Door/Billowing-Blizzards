@@ -33,10 +33,6 @@ func _level_completed():
 
 func next_level():
 	level += 1
-
-	if level >= _level_count:
-		print("Game complete!")
-		return
 	
 	_spawner.read_lvl_data(level)
 	get_node("Player").is_nonplayable = false
