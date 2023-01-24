@@ -200,7 +200,7 @@ func _spawn_enemies(enemy_group):
 			4: # center
 				spawn_pos = Vector2((min_x_pos + max_x_pos)/2, (min_y_pos + max_y_pos)/2)
 
-	var enemy_count = enemy_group["count"]
+	var enemy_count = int(enemy_group["count"])
 
 	# calculate radial positioning
 	var seperation_angle = deg2rad(360 / enemy_count)
