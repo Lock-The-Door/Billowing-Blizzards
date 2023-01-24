@@ -64,7 +64,7 @@ func add_slots():
 				slot.item_body = body
 				slot.item_location = location
 				add_child(slot)
-				slot.rect_position = body_slots[location]["position"] - Vector2(50, 50) + body.position
+				slot.rect_position = body_slots[location]["position"] * Vector2(4, 1) - Vector2(50, 50) + body.position
 				slot.set_item(body.items[location])
 
 

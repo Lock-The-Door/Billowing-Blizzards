@@ -115,7 +115,7 @@ func damage(damage):
 		# Player is dead
 		var dp_instance = load("res://Templates/Effects/Death Particles.tscn").instance()
 		dp_instance.global_position = self.global_position
-		get_node("../Particles").add_child(dp_instance)
+		get_node("/root/Game/Particles").add_child(dp_instance)
 		self.visible = false
 		
 		# Prepare to transition to game over screen

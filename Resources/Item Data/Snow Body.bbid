@@ -1,7 +1,7 @@
 {
     "left": {
         "position": {
-            "x": -100,
+            "x": -25,
             "y": 0
         },
         "flipH": true,
@@ -9,7 +9,7 @@
     },
     "right": {
         "position": {
-            "x": 100,
+            "x": 25,
             "y": 0
         },
         "flipH": false,
