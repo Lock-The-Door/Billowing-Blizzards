@@ -34,14 +34,14 @@ func _set_item():
 			# instantiate the body type, set it up, and resolve
 			var clone_body = item_resource.instance()
 			clone_player.body_count += 1
-			clone_body.init(clone_player.body_count)
 			clone_player.add_child(clone_body)
+			clone_body.init(clone_player.body_count)
 			clone_player.resolve_body_parts()
 			
 			var real_body = item_resource.instance()
 			_real_player.body_count += 1
-			real_body.init(_real_player.body_count)
 			_real_player.add_child(real_body)
+			real_body.init(_real_player.body_count)
 			_real_player.resolve_body_parts()
 			_real_player.add_health(real_body.health)
 			

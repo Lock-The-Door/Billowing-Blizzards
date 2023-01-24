@@ -36,7 +36,6 @@ func compile(dynamic_level_data):
 			compiled_data = expression.execute([_level], self)
 			if expression.has_execute_failed():
 				compiled_data = dynamic_level_data
-				push_warning("Error executing expression: " + dynamic_level_data)
 
 	return compiled_data
 

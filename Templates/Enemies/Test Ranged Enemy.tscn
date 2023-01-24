@@ -8,7 +8,7 @@
 [node name="Test Ranged Enemy" type="Sprite"]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-_health = 50
+_health = 25
 _speed = 100
 _attack_damage = 3
 _attack_range = 750
